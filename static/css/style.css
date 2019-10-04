@@ -5,7 +5,19 @@
 
 /*Header*/
 
+.kpis{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
 
+h1{
+    color:blue;
+    text-align: center;
+}
+
+.page-header{
+    margin:20px;
+}
 /* Sidebar */
 #sidebar-wrapper {
     z-index: 1;
