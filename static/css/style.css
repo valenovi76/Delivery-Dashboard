@@ -87,3 +87,12 @@ h1{
     margin: .5rem 0;
 }
 
+#wip_group_selector{
+    background-color: red;
+    color:black
+}
+
+#wip{
+    background-color: blue;
+    color:black;
+}
