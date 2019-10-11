@@ -47,7 +47,7 @@ function show_order_wip(ndx) {
         .yAxis().ticks(20);
 }
 
-//Order Type js
+//Order Type js (pie)
 function show_order_type(ndx) {
     var dim = ndx.dimension(dc.pluck('Order_Type'));
     var group = dim.group();
@@ -61,3 +61,76 @@ function show_order_type(ndx) {
         .group(group)
         .legend(dc.legend())
 }
+//line and bar
+ var svg = d3.select("body").append("svg")
+      .attr("width", 960)
+      .attr("height", 500);
+
+    function generate_data() {
+      return d3.range(10).map(function() {
+        return Math.random();
+      });
+    }
+
+    var data = generate_data();
+
+    var y = d3.scaleLinear()
+    	.domain([0, d3.max(data)])
+    	.range([0, +d3.select("svg").attr("height")/3]);
+
+    var r = d3.scaleLinear()
+    	.domain([0, d3.max(data)])
+    	.range([2, 10]);
+
+    // ordinal
+    var x = d3.scaleBand()
+    	.domain(d3.range(10))
+    	.range([0, +d3.select("svg").attr("width")]);
+
+		var s = svg.selectAll("rect").data(data);
+
+    s.enter()
+     .append("rect")
+
+     svg.selectAll("rect").data(data)
+	    .attr("width", function(d, i) { return x.bandwidth(); })
+      .attr("height", function(d, i) { return y(d); })
+      .attr("x", function(d, i) { return x(i); })
+      .attr("y",  function(d) { return 200 - y(d); })
+
+    svg.selectAll("rect")
+	    .attr("width", function(d, i) { return x.bandwidth(); })
+      .attr("height", function(d, i) { return y(d); })
+     	.on("mouseenter", function(d) {
+      	if(typeof d.__clicked === "undefined" || d.__clicked !== true) {
+	      	d3.select(this).style("fill", "red")
+        }
+    	})
+    	.on("mouseleave", function(d) {
+      	if(typeof d.__clicked === "undefined" || d.__clicked !== true) {
+	      	d3.select(this).style("fill", "white")
+        }
+    	})
+       .on("click", function(d) {
+      	d3.select(this).transition().duration(1000).style("fill", "green")
+        d.__clicked = true;
+    	});
+
+		var s = svg.selectAll("circle").data(data);
+
+    s.enter()
+     	.append("circle")
+
+     svg.selectAll("circle").data(data)
+      .attr("cx", function(d, i) { return x(i) + x.bandwidth() / 2; })
+      .attr("cy", function(d) { return 200 - y(d); })
+     	.attr("r", function(d) { return r(d); });
+
+    var line = d3.line()
+     .x(function(d, i) { return x(i) + x.bandwidth() /2 ; })
+     .y(function(d) { return 200 - y(d); });
+
+
+		var s = svg.selectAll("path").data([data]).enter()
+    	.append("path")
+    	.attr("d", function(d) { return line(d); })
