@@ -10,7 +10,7 @@ function makeGraphs(error, orderData) {
     show_wip_group_selector(ndx);
     show_order_wip(ndx);
     show_order_type(ndx);
-    show_onTime_late(ndx)
+    //show_created_completed(ndx);
 
     dc.renderAll();
 }
@@ -60,25 +60,16 @@ function show_order_type(ndx) {
         .group(group)
         .legend(dc.legend())
 }
-//onTime-late js
-function show_onTime_late(ndx) {
-    var completedonly = d3.nest()
-    .key(function(d) { return d.Order_Status; })
-    .entries(Completed);
-    var dim = ndx.dimension(dc.pluck('On_Time'));
-    var group = dim.group();
+//created-completed js
 
-    dc.barChart("#onTime_late")
-        .width(400)
-        .height(300)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(dim)
-        .group(group)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .elasticY(true)
-        .xAxisLabel("Age_Status")
-        .yAxis().ticks(20);
+d3.csv("data/orders.csv",function(data){
+var ontimelatecount = d3.nest()
+
+  .key(function(d) { return d.On_Time; })
+  .rollup(function(v) { return v.length; })
+  .entries(data);
+})
+
+function show_created_completed(ndx){
+
 }
-
