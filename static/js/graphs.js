@@ -63,12 +63,20 @@ function show_order_type(ndx) {
 //created-completed js
 
 d3.csv("data/orders.csv",function(data){
-var ontimelatecount = d3.nest()
 
-  .key(function(d) { return d.On_Time; })
+var OCD_Month = d3.time.format("%d %B, %Y").parse;
+OCD_Month("OCD");
+var CHD_Month = d3.time.format("%d %B, %Y").parse;
+CHD_Month("CHD");
+var creatednest = d3.nest()
+  .key(function(d) { return d.OCD_Month; })
   .rollup(function(v) { return v.length; })
   .entries(data);
-})
+var completeddnest = d3.nest()
+  .key(function(d) { return d.CHD_Month; })
+  .rollup(function(v) { return v.length; })
+  .entries(data);
+});
 
 function show_created_completed(ndx){
 
