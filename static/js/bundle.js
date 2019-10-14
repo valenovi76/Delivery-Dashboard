@@ -1,17 +1,8 @@
-
 var chart = c3.generate({
-    bindto: '#chart',
+     bindto: '#chart',
     data: {
-
-        url:'/data/orders.csv',
-        x: 'Order_Status',
-                type: 'line'
-
-        },
-    tooltip: {
-        show: false
+        x: "Age_Status",
+        url: '/data/created_completed.csv'
     },
-            point: {
-        show: false
-    }
+    type:"pie"
 });
