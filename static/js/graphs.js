@@ -1,7 +1,11 @@
 //load data
 queue()
-    .defer(d3.csv, "data/orders.csv")
-    .await(makeGraphs);
+.defer(d3.csv, "/data/orders.csv")
+.await(makeGraphs);
+
+
+//d3.csv("/data/orders.csv").then(function(data) {
+
 
 // Make graphs function
 function makeGraphs(error, orderData) {
@@ -10,10 +14,11 @@ function makeGraphs(error, orderData) {
     show_wip_group_selector(ndx);
     show_order_wip(ndx);
     show_order_type(ndx);
-    show_created_completed(ndx);
+    //show_created_completed(ndx);
 
     dc.renderAll();
 }
+
 
 //Selector js
 function show_wip_group_selector(ndx){
@@ -62,25 +67,4 @@ function show_order_type(ndx) {
 }
 //created-completed js
 
-function show_created_completed(ndx) {
-    var OCD_Month = d3.time.format("%d %B, %Y").parse;
-    OCD_Month("OCD");
-    var CHD_Month = d3.time.format("%d %B, %Y").parse;
-    CHD_Month("CHD");
-    var dim = ndx.dimension(dc.pluck('CHD_Month'));
-    var group = dim.group();
-
-    dc.barChart("#bar_line")
-        .width(400)
-        .height(300)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(dim)
-        .group(group)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .elasticY(true)
-        .xAxisLabel("Completed")
-        .yAxis().ticks(20);
-}
 
