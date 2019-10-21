@@ -87,6 +87,10 @@ h1{
     margin: .5rem 0;
 }
 
+.row{
+    border: 10px;
+    border-color: red;
+}
 #wip_group_selector{
     background-color: red;
     color:black

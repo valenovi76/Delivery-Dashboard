@@ -14,7 +14,7 @@ function makeGraphs(error, orderData) {
     show_wip_group_selector(ndx);
     show_order_wip(ndx);
     show_order_type(ndx);
-    //show_created_completed(ndx);
+    show_created_completed(ndx);
 
     dc.renderAll();
 }
@@ -67,4 +67,37 @@ function show_order_type(ndx) {
 }
 //created-completed js
 
+
+function show_created_completed(ndx){
+
+    var dim1 = ndx.dimension(dc.pluck('Created_Month'))
+    var group1 = dim1.group();
+
+
+    dc.barChart("#bar_line")
+        .width(400)
+        .height(300)
+        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .dimension(dim1)
+        .group(group1)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .sort()
+        .xAxisLabel("Months")
+        .yAxis().ticks(20);
+
+        dc.lineChart("#bar_line")
+        .width(400)
+        .height(300)
+        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .dimension(dim1)
+        .group(group1)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Age_Status")
+        .yAxis().ticks(20);
+}
 
