@@ -11,12 +11,18 @@ queue()
 function makeGraphs(error, orderData) {
     var ndx = crossfilter(orderData);
 
+
+
+orderData.forEach(function(d){
+d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
+
     show_wip_group_selector(ndx);
     show_product_selector(ndx);
     show_project_selector(ndx);
     show_created(ndx);
     show_completed(ndx);
     show_order_wip(ndx);
+    show_ct_avg(ndx);
     show_order_type(ndx);
 
 
@@ -49,7 +55,7 @@ function show_project_selector(ndx){
         .group(group);
 }
 
-//created-completed js
+//created line js
 function show_created(ndx) {
 var dim = ndx.dimension(dc.pluck('Created_Month'));
 var group = dim.group();
@@ -68,7 +74,7 @@ dc.lineChart("#created")
 .yAxis().ticks(20);
  }
 
-//completed line
+//completed line js
 function show_completed(ndx) {
 var dim = ndx.dimension(dc.pluck('Completed_Month'));
 var group = dim.group();
@@ -87,7 +93,7 @@ dc.lineChart("#completed")
 .yAxis().ticks(20);
  }
 
-//WIP js
+//WIP pie js
 function show_order_wip(ndx) {
     var dim = ndx.dimension(dc.pluck('Age_Status'));
     var group = dim.group();
@@ -101,13 +107,56 @@ function show_order_wip(ndx) {
         .group(group)
         .legend(dc.legend())
 }
+//CT Avg line js
+function show_ct_avg(ndx){
+var dim = ndx.dimension(dc.pluck("Completed_Month"));
 
-//Order Type js (pie)
+function add_item(p,v){
+p.count ++;
+p.total += v.CT_Ex_Delayed_Days;
+p.average = p.total/p.count;
+return p;
+}
+function remove_item(p,v){
+p.count--;
+if(p.count==0){
+p.total=0;
+p.average=0;}else{
+p.total -= v.CT_Ex_Delayed_Days;
+p.average = p.total/p.count;
+}
+return p;
+}
+function initialise(){
+    return{count:0, total:0, average:0};
+}
+
+
+var group= dim.group().reduce(add_item,remove_item,initialise);
+
+
+dc.lineChart("#ct_avg")
+.width(400)
+.height(300)
+.margins({top: 10, right: 50, bottom: 30, left: 50})
+.dimension(dim)
+.group(group)
+.valueAccessor(function(d){
+return d.value.average})
+.transitionDuration(500)
+.x(d3.scale.ordinal())
+.xUnits(dc.units.ordinal)
+.elasticY(true)
+.xAxisLabel("FY 2019-2020 Month")
+.yAxis().ticks(20);
+
+}
+//CT perf js
+
+//OnTime vs Late js
 function show_order_type(ndx) {
     var dim = ndx.dimension(dc.pluck('On_Time'));
     var group = dim.group();
-
-
 
         dc.barChart("#ontime_perf")
         .width(400)
