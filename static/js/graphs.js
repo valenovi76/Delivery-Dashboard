@@ -23,7 +23,8 @@ d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
     show_completed(ndx);
     show_order_wip(ndx);
     show_ct_avg(ndx);
-    show_order_type(ndx);
+    show_ontime_late(ndx);
+    //show_order_type(ndx);
 
 
     dc.renderAll();
@@ -154,7 +155,7 @@ return d.value.average})
 //CT perf js
 
 //OnTime vs Late js
-function show_order_type(ndx) {
+function show_ontime_late(ndx) {
     var dim = ndx.dimension(dc.pluck('On_Time'));
     var group = dim.group();
 
@@ -171,3 +172,4 @@ function show_order_type(ndx) {
         .xAxisLabel("OnTime vs Late")
         .yAxis().ticks(20);
 }
+
