@@ -77,6 +77,12 @@ h1{
 /*Cards style*/
 .card{
     display:block;
+
+}
+.card-header{
+    border-radius: 15px 15px 15px 15px;}
+
+.card-body{border-radius: 15px 15px 15px 15px;
 }
 
 .icon {
@@ -98,13 +104,18 @@ h1{
     background-color:#375a7f;
     color:whitesmoke;
     margin:20px;
+
 }
 .selectors{
     background-color:#375a7f;
     color:whitesmoke;
     margin:10px;
+    border-radius: 15px 15px 15px 15px;
 }
 
+.dc-select-menu {
+    width:100% !important;
+}
 
 .graph{
     background-color: rgb(34, 32, 32);

@@ -54,6 +54,7 @@ function show_project_selector(ndx){
     var select = dc.selectMenu("#project_selector")
         .dimension(dim)
         .group(group);
+
 }
 
 //created line js
@@ -64,7 +65,7 @@ var group = dim.group();
 dc.lineChart("#created")
 .width(400)
 .height(300)
-.margins({top: 10, right: 50, bottom: 30, left: 50})
+.margins({top: 30, right: 40, bottom: 50, left: 50})
 .dimension(dim)
 .group(group)
 .transitionDuration(500)
@@ -72,6 +73,12 @@ dc.lineChart("#created")
 .xUnits(dc.units.ordinal)
 .elasticY(true)
 .xAxisLabel("FY 2019-2020 Month")
+.call(xAxisLabel)
+.selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-65)" )
 .yAxis().ticks(20);
  }
 
@@ -156,20 +163,72 @@ return d.value.average})
 
 //OnTime vs Late js
 function show_ontime_late(ndx) {
-    var dim = ndx.dimension(dc.pluck('On_Time'));
-    var group = dim.group();
+    var dim = ndx.dimension(dc.pluck('Completed_Month'));
+    var deliverybyRFT = dim.group().reduce(
+        function(p,v){
+            p.total++;
+            if(v.rank == rank){
+                p.match ++ ;
+            }
+            return p
 
-        dc.barChart("#ontime_perf")
-        .width(400)
-        .height(300)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(dim)
-        .group(group)
-        .transitionDuration(500)
+            },
+
+        function (p,v){
+            p.total--;
+            if(v.rank == rank){
+                p.match -- ;
+            }
+            return p
+
+        },
+
+        function(){
+            return{total:0,match:0};
+        }
+    );
+
+
+    function rankbyrftperf (dimension,rank){
+        dimension.group().reduce(
+        function(p,v){
+            p.total++;
+                if(v.rank == rank) {
+                    p.match++;
+                }
+                return p;
+            },
+
+        function (p, v) {
+                p.total--;
+                if(v.rank == rank) {
+                    p.match--;
+                }
+                return p;
+            },
+            function () {
+                return {total: 0, match: 0};
+            }
+        );
+    }
+    var rftOnTime = rankbyrftperf(dim,"On-Time");
+    var rftLate = rankbyrftperf(dim,"Late");
+
+dc.barChart("#ontime_perf")
+    .width(400)
+    .height(300)
+    .dimension(dim)
+    .group(rftOnTime,"On-Time")
+    .stack(rftLate, "Late")
+    .valueAccessor(function(d) {
+            if(d.value.total > 0) {
+                return (d.value.match / d.value.total) * 100;
+            } else {
+                return 0;
+            }
+        })
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
-        .elasticY(true)
-        .xAxisLabel("OnTime vs Late")
-        .yAxis().ticks(20);
+        .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
+        .margins({top: 10, right: 100, bottom: 30, left: 30});
 }
-
