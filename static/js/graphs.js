@@ -2,19 +2,15 @@
 queue()
 .defer(d3.csv, "/data/orders.csv")
 .await(makeGraphs);
-
-
-//d3.csv("/data/orders.csv").then(function(data) {
-
-
 // Make graphs function
 function makeGraphs(error, orderData) {
-    var ndx = crossfilter(orderData);
-
-
-
+var ndx = crossfilter(orderData);
 orderData.forEach(function(d){
 d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
+
+orderData.forEach(function(d){
+d.Created_Month= d3.time.format("%m-%Y").parse(d.Created_Month)})
+
 
     show_wip_group_selector(ndx);
     show_product_selector(ndx);
@@ -60,7 +56,7 @@ function show_project_selector(ndx){
 //created line js
 function show_created(ndx) {
 var dim = ndx.dimension(dc.pluck('Created_Month'));
-var group = dim.group();
+var group =dim.group();
 
 dc.lineChart("#created")
 .width(400)
@@ -70,15 +66,9 @@ dc.lineChart("#created")
 .group(group)
 .transitionDuration(500)
 .x(d3.scale.ordinal())
-.xUnits(dc.units.ordinal)
+.xUnits(d3.time.months)
 .elasticY(true)
 .xAxisLabel("FY 2019-2020 Month")
-.call(xAxisLabel)
-.selectAll("text")
-            .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", "rotate(-65)" )
 .yAxis().ticks(20);
  }
 
@@ -86,6 +76,7 @@ dc.lineChart("#created")
 function show_completed(ndx) {
 var dim = ndx.dimension(dc.pluck('Completed_Month'));
 var group = dim.group();
+
 
 dc.lineChart("#completed")
 .width(400)
@@ -162,35 +153,9 @@ return d.value.average})
 //CT perf js
 
 //OnTime vs Late js
-function show_ontime_late(ndx) {
-    var dim = ndx.dimension(dc.pluck('Completed_Month'));
-    var deliverybyRFT = dim.group().reduce(
-        function(p,v){
-            p.total++;
-            if(v.rank == rank){
-                p.match ++ ;
-            }
-            return p
-
-            },
-
-        function (p,v){
-            p.total--;
-            if(v.rank == rank){
-                p.match -- ;
-            }
-            return p
-
-        },
-
-        function(){
-            return{total:0,match:0};
-        }
-    );
-
-
+function show_ontime_late(ndx){
     function rankbyrftperf (dimension,rank){
-        dimension.group().reduce(
+        return dimension.group().reduce(
         function(p,v){
             p.total++;
                 if(v.rank == rank) {
@@ -211,10 +176,13 @@ function show_ontime_late(ndx) {
             }
         );
     }
+    var dim = ndx.dimension(dc.pluck("Completed_Month"));
     var rftOnTime = rankbyrftperf(dim,"On-Time");
     var rftLate = rankbyrftperf(dim,"Late");
 
-dc.barChart("#ontime_perf")
+
+
+    dc.barChart("#ontime_perf")
     .width(400)
     .height(300)
     .dimension(dim)
@@ -227,8 +195,8 @@ dc.barChart("#ontime_perf")
                 return 0;
             }
         })
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
-        .margins({top: 10, right: 100, bottom: 30, left: 30});
+    .x(d3.scale.ordinal())
+    .xUnits(dc.units.ordinal)
+    .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
+    .margins({top: 10, right: 100, bottom: 30, left: 30});
 }
