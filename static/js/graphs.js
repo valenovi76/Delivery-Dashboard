@@ -5,9 +5,10 @@ queue()
 
 // Make graphs function
 function makeGraphs(error, orderData) {
-var ndx = crossfilter(orderData);
-var completeOrders = ndx.dimension(function(d){return d.Completed_Month});
-completeOrders.filter(function(d){return d !=="N/A"})
+
+    var ndx = crossfilter(orderData);
+    //var completeOrders = ndx.dimension(function(d){return d.Completed_Month});
+//completeOrders.filter(function(d){return d ==="N/A"})
 
 orderData.forEach(function(d){
 d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
@@ -79,15 +80,14 @@ dc.lineChart("#created")
 //completed line js
 function show_completed(ndx) {
 var dim = ndx.dimension(dc.pluck('Completed_Month'));
-var dim2 = ndx.dimension(dc.pluck('Created_Month'));
+//dim.filter(function(d) {return d !== "N/A"});
 var group = dim.group();
-var group2=dim2.group();
 
 dc.lineChart("#completed")
-
+ .filter([["N/A"]])
 .width(400)
 .height(300)
-.margins({top: 10, right: 50, bottom: 30, left: 50})
+.margins({top: 30, right: 40, bottom: 50, left: 50})
 .dimension(dim)
 .group(group)
 .transitionDuration(500)
@@ -105,7 +105,7 @@ function show_order_wip(ndx) {
 
 
     dc.pieChart("#wip")
-        .filter([["Backlog","BAU","BAU Parked","Project Parked"]])
+
         .width(400)
         .height(300)
         .slicesCap(4)
