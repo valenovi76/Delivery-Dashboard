@@ -80,11 +80,11 @@ dc.lineChart("#created")
 //completed line js
 function show_completed(ndx) {
 var dim = ndx.dimension(dc.pluck('Completed_Month'));
-//dim.filter(function(d) {return d !== "N/A"});
+dim.filter(function(d) {return d >0});
 var group = dim.group();
 
 dc.lineChart("#completed")
- .filter([["N/A"]])
+
 .width(400)
 .height(300)
 .margins({top: 30, right: 40, bottom: 50, left: 50})
