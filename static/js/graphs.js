@@ -2,14 +2,18 @@
 queue()
 .defer(d3.csv, "/data/orders.csv")
 .await(makeGraphs);
+
 // Make graphs function
 function makeGraphs(error, orderData) {
 var ndx = crossfilter(orderData);
+var completeOrders = ndx.dimension(function(d){return d.Completed_Month});
+completeOrders.filter(function(d){return d !=="N/A"})
+
 orderData.forEach(function(d){
 d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
 
-orderData.forEach(function(d){
-d.Created_Month= d3.time.format("%m-%Y").parse(d.Created_Month)})
+//orderData.forEach(function(d){
+//d.Created_Month= d3.time.format("%m-%Y").parse(d.Created_Month)})
 
 
     show_wip_group_selector(ndx);
@@ -66,7 +70,7 @@ dc.lineChart("#created")
 .group(group)
 .transitionDuration(500)
 .x(d3.scale.ordinal())
-.xUnits(d3.time.months)
+.xUnits(dc.units.ordinal)
 .elasticY(true)
 .xAxisLabel("FY 2019-2020 Month")
 .yAxis().ticks(20);
@@ -75,10 +79,12 @@ dc.lineChart("#created")
 //completed line js
 function show_completed(ndx) {
 var dim = ndx.dimension(dc.pluck('Completed_Month'));
+var dim2 = ndx.dimension(dc.pluck('Created_Month'));
 var group = dim.group();
-
+var group2=dim2.group();
 
 dc.lineChart("#completed")
+
 .width(400)
 .height(300)
 .margins({top: 10, right: 50, bottom: 30, left: 50})
@@ -97,7 +103,9 @@ function show_order_wip(ndx) {
     var dim = ndx.dimension(dc.pluck('Age_Status'));
     var group = dim.group();
 
+
     dc.pieChart("#wip")
+        .filter([["Backlog","BAU","BAU Parked","Project Parked"]])
         .width(400)
         .height(300)
         .slicesCap(4)
@@ -105,6 +113,7 @@ function show_order_wip(ndx) {
         .dimension(dim)
         .group(group)
         .legend(dc.legend())
+
 }
 //CT Avg line js
 function show_ct_avg(ndx){
