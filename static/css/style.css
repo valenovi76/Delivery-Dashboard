@@ -1,10 +1,12 @@
 /*Body*/
-.page-content-wrapper{
-    background-color: white;
+body{
+    background-color:#1a2035;
+    color:#3c4858;
 
 }
 
-.chart{color:balck;}
+.chart{
+    color:balck;}
 /*Header*/
 
 .kpis{
@@ -27,9 +29,9 @@ h1{
     width: 0;
     height: 100%;
     overflow-y: hidden;
-    background: #2C3E50;
     border: 2px solid red;
-    opacity: 0.9;
+    background: #1f283e;
+    opacity: .94;
 }
 
 /* Always take up entire screen */
@@ -118,9 +120,47 @@ h1{
     width:100% !important;
 }
 
-.graph{
-    background-color: rgb(34, 32, 32);
-    color:whitesmoke;
+#created{
+    background-color:#fb8c00;
     text-align: center;
+
 }
 
+#completed{
+    background-color:#48a357;
+    text-align: center;
+}
+#order_type{
+    background-color: #913f9e;
+    text-align:center;
+}
+#ct_avg{
+    background-color:#d93733;
+    text-align:center;
+}
+
+#ct_perf{
+    background-color: lightseagreen;
+text-align:center;
+}
+
+#ct_perf{
+    background-color: #fb8c00;
+text-align:center;
+}
+.axis {
+  /*font-size: /* Insert font size */
+  color: whitesmoke;
+  stroke:whitesmoke;
+  stroke-width: 0.1;
+}
+
+text {
+  font-size: 15px;
+  fill:whitesmoke;
+}
+
+path {
+  stroke:white;
+  stroke-width: 1;
+}
