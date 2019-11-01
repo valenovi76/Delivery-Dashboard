@@ -159,50 +159,20 @@ return d.value.average})
 //CT perf js
 
 //OnTime vs Late js
-function show_ontime_late(ndx){
-    function rankbyrftperf (dimension,rank){
-        return dimension.group().reduce(
-        function(p,v){
-            p.total++;
-                if(v.rank == rank) {
-                    p.match++;
-                }
-                return p;
-            },
 
-        function (p, v) {
-                p.total--;
-                if(v.rank == rank) {
-                    p.match--;
-                }
-                return p;
-            },
-            function () {
-                return {total: 0, match: 0};
-            }
-        );
-    }
-    var dim = ndx.dimension(dc.pluck("Completed_Month"));
-    var rftOnTime = rankbyrftperf(dim,"On-Time");
-    var rftLate = rankbyrftperf(dim,"Late");
-
-
+    function show_ontime_late(ndx){
+    var dim = ndx.dimension(dc.pluck('On_Time'));
+    var group = dim.group();
 
     dc.barChart("#ontime_perf")
-    .width(400)
-    .height(300)
-    .dimension(dim)
-    .group(rftOnTime,"On-Time")
-    .stack(rftLate, "Late")
-    .valueAccessor(function(d) {
-            if(d.value.total > 0) {
-                return (d.value.match / d.value.total) * 100;
-            } else {
-                return 0;
-            }
-        })
-    .x(d3.scale.ordinal())
-    .xUnits(dc.units.ordinal)
-    .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
-    .margins({top: 10, right: 100, bottom: 30, left: 30});
+        .width(400)
+        .height(300)
+        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .dimension(dim)
+        .group(group)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .xAxisLabel("RFTPerf")
+        .yAxis().ticks(20);
 }
