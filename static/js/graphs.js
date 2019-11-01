@@ -3,6 +3,17 @@ queue()
 .defer(d3.csv, "/data/orders.csv")
 .await(makeGraphs);
 
+//Cards values
+var CurrentRFTPerf = 0;
+for(var i = 0; i < Completed_Month.length; ++i){
+    if(array[i] == "OnTime")
+        count++;
+}
+console.log(CurrentCTPerf);
+
+//var CurrentCTPerf =
+//var CurrentDelivered =
+
 // Make graphs function
 function makeGraphs(error, orderData) {
 
@@ -160,12 +171,12 @@ return d.value.average})
 
 //OnTime vs Late js
 
-    function show_ontime_late(ndx){
+   function show_ontime_late(ndx){
     var dim = ndx.dimension(dc.pluck('On_Time'));
     var group = dim.group();
 
     dc.barChart("#ontime_perf")
-        .width(400)
+    .width(400)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(dim)
@@ -175,4 +186,4 @@ return d.value.average})
         .xUnits(dc.units.ordinal)
         .xAxisLabel("RFTPerf")
         .yAxis().ticks(20);
-}
+   }
