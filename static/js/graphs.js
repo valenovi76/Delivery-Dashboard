@@ -3,16 +3,6 @@ queue()
 .defer(d3.csv, "/data/orders.csv")
 .await(makeGraphs);
 
-//Cards values
-var CurrentRFTPerf = 0;
-for(var i = 0; i < Completed_Month.length; ++i){
-    if(array[i] == "OnTime")
-        count++;
-}
-console.log(CurrentCTPerf);
-
-//var CurrentCTPerf =
-//var CurrentDelivered =
 
 // Make graphs function
 function makeGraphs(error, orderData) {
@@ -33,8 +23,12 @@ d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
     show_completed(ndx);
     show_order_order_type(ndx);
     show_ct_avg(ndx);
+    show_SLT_perf(ndx);
     show_ontime_late(ndx);
-    //show_order_type(ndx);
+    show_percent_RFT_OnTime(ndx);
+
+
+
 
 
     dc.renderAll();
@@ -66,6 +60,41 @@ function show_project_selector(ndx){
         .group(group);
 
 }
+
+// KPIS values
+function show_percent_RFT_OnTime(ndx) {
+    var percentageThatAreOnTime = ndx.groupAll().reduce(
+        function(p, v) {
+            p.total++;
+                if(v.On_Time === "On-Time") {
+                    p.match++;
+                }
+                return p;
+            },
+            function (p, v) {
+                p.total--;
+                if(v.On_Time === "On-Time") {
+                    p.match--;
+                }
+                return p;
+            },
+            function () {
+                return {total: 0, match: 0};
+            }
+    );
+
+    dc.numberDisplay("#RFTPerc")
+        .formatNumber(d3.format(".1%"))
+        .valueAccessor(function (d) {
+            if (d.count == 0) {
+                return 0;
+            } else {
+                return ( d.match/d.total );
+            }
+        })
+        .group(percentageThatAreOnTime)
+}
+
 
 //created line js
 function show_created(ndx) {
@@ -168,22 +197,117 @@ return d.value.average})
 
 }
 //CT perf js
+function show_SLT_perf(ndx){
 
-//OnTime vs Late js
+    function SLTPerfByMonth(dimension, SLT_Status) {
+        return dimension.group().reduce(
+            function (p, v) {
+                p.total++;
+                if(v.SLT_Status == SLT_Status) {
+                    p.match++;
+                }
+                return p;
+            },
+            function (p, v) {
+                p.total--;
+                if(v.SLT_Status == SLT_Status) {
+                    p.match--;
+                }
+                return p;
+            },
+            function () {
+                return {total: 0, match: 0};
+            }
+        );
+    }
 
-   function show_ontime_late(ndx){
-    var dim = ndx.dimension(dc.pluck('On_Time'));
-    var group = dim.group();
+    var dim = ndx.dimension(dc.pluck("Completed_Month"));
+    var PassByMonth = SLTPerfByMonth(dim, "Pass");
+    var FailByMonth = SLTPerfByMonth(dim, "Fail");
 
-    dc.barChart("#ontime_perf")
-    .width(400)
+    dc.barChart("#ct_perf")
+        .width(400)
         .height(300)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(dim)
-        .group(group)
-        .transitionDuration(500)
+        .group(PassByMonth, "Pass")
+        .stack(FailByMonth, "Fail")
+        .valueAccessor(function(d) {
+            if(d.value.total > 0) {
+                return (d.value.match / d.value.total) * 100;
+            } else {
+                return 0;
+            }
+        })
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
-        .xAxisLabel("RFTPerf")
-        .yAxis().ticks(20);
+        .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
+        .margins({top: 10, right: 100, bottom: 30, left: 30});
+}
+//OnTime vs Late js
+
+   //function show_ontime_late(ndx){
+    //var dim = ndx.dimension(dc.pluck('On_Time'));
+    //var group = dim.group();
+
+    //dc.barChart("#ontime_perf")
+    //.width(400)
+        //.height(300)
+        //.margins({top: 10, right: 50, bottom: 30, left: 50})
+        //.dimension(dim)
+        //.group(group)
+        //.transitionDuration(500)
+        //.x(d3.scale.ordinal())
+        //.xUnits(dc.units.ordinal)
+        //.xAxisLabel("RFTPerf")
+        //.yAxis().ticks(20);
+   //}
+
+
+  //On time vs Late stacked-bars graph
+
+   function show_ontime_late(ndx) {
+
+    function RFTPerfByMonth(dimension, On_Time) {
+        return dimension.group().reduce(
+            function (p, v) {
+                p.total++;
+                if(v.On_Time == On_Time) {
+                    p.match++;
+                }
+                return p;
+            },
+            function (p, v) {
+                p.total--;
+                if(v.On_Time == On_Time) {
+                    p.match--;
+                }
+                return p;
+            },
+            function () {
+                return {total: 0, match: 0};
+            }
+        );
+    }
+
+    var dim = ndx.dimension(dc.pluck("Completed_Month"));
+    var OnTimeByMonth = RFTPerfByMonth(dim, "On-Time");
+    var LateByMonth = RFTPerfByMonth(dim, "Late");
+
+    dc.barChart("#ontime_perf")
+        .width(400)
+        .height(300)
+        .dimension(dim)
+        .group(OnTimeByMonth, "On-Time")
+        .stack(LateByMonth, "Late")
+        .valueAccessor(function(d) {
+            if(d.value.total > 0) {
+                return (d.value.match / d.value.total) * 100;
+            } else {
+                return 0;
+            }
+        })
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
+        .margins({top: 10, right: 100, bottom: 30, left: 30});
    }

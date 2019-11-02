@@ -17,7 +17,7 @@
     <script type="text/javascript" src="static/js/crossfilter.min.js"></script>
     <script type="text/javascript" src="static/js/dc.min.js"></script>
     <script type="text/javascript" src="static/js/queue.min.js"></script>
-    <script type="text/javascript" src="static/js/graphs.js"></script>
+    <script type="text/javascript" src="static/js/rft_graphs.js"></script>
 
 
 
@@ -50,73 +50,9 @@
                 <div class="row bg-secondary rounded KPIS-header">
                     <div class="col-md-12 page-header ">
                         <a href="#" class="btn btn-light" id="menu-toggle">Menu</a>
-                        <h3>Delivery KPIs Dashboard</h3>
+                        <h4>RFT Performance</h3>
                         <div class="row kpis">
-                            <div class="card-group mx-auto">
-                                <div class="card flex-fill bg-primary text-white mx-3 rounded">
-                                    <div class="card-header">
-                                        <h5 class="card-title text-white mb-0 rounded">RFT Performance</h5>
-                                    </div>
-                                    <div class="card-body py-3">
-                                        <div class="row no-gutters">
-                                            <div class="col-4 align-self-center text-left">
-                                                <div class="icon icon-primary">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle">
-                                                        <rect x="1" y="3" width="15" height="13"></rect>
-                                                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                                                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                                                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="col-8 align-self-center text-right">
 
-                                                <h2 class="text-white">95%</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card flex-fill bg-danger text-white mx-3 rounded">
-                                    <div class="card-header">
-                                        <h5 class="card-title text-white mb-0 rounded">CT Performance</h5>
-                                    </div>
-                                    <div class="card-body py-3">
-                                        <div class="row no-gutters">
-                                            <div class="col-4 align-self-center text-left">
-                                                <div class="icon icon-primary">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle">
-                                                        <rect x="1" y="3" width="15" height="13"></rect>
-                                                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                                                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                                                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="col-8 align-self-center text-right">
-                                                <h2 class="text-white">94%</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card flex-fill bg-warning text-white mx-3 rounded">
-                                    <div class="card-header">
-                                        <h5 class="card-title text-white mb-0 rounded">Monthly delivery</h5>
-                                    </div>
-                                        <div class="card-body py-3">
-                                            <div class="row no-gutters">
-                                                <div class="col-4 align-self-center text-left">
-                                                    <div class="icon icon-primary">
-                                                        <i class="far fa-check-square"></i>
-                                                    </div>
-                                                </div>
-                                                        <div class="col-8 align-self-center text-right">
-                                                            <h2 class="text-white"> 200 </h2>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                        </div
-
-                        >
                         </div>
                     </div>
                 </div>
@@ -127,58 +63,38 @@
         <!-- row selectors-->
             <div class="row selectors">
             <div class="col-md">
-            <div id="wip_group_selector">Select Channel<br></br></div>
+            <div id="RFT_Channel_selector">Select Channel<br></br></div>
             </div>
             <div class="col-md">
-            <div id="product_selector">Select Product<br></br></div>
+            <div id="RFT_product_selector">Select Product<br></br></div>
             </div>
             <div class="col-md">
-            <div id="project_selector">Select Project<br></br></div>
+            <div id="RFT_project_selector">Select Project<br></br></div>
             </div>
             </div>
         <!--Row section title-->
             <div class ="row section-title">
-            WIP INFOGRAPH
+            RFT GRAPHS   <!-- row WIP graphs-->
             </div>
-        <!-- row WIP graphs-->
-            <div class="row WIP">
+        <!--Row section RFT Graphs-->
+            <div class="row RFT-Graphs">
 
-            <div class=col-sm>
-            <div id="created" class="graph"><span>Created Orders</div>
-            </div>
-
-            <div class=col-sm>
-            <div id="completed" class="graph"><span>Completed Orders</span></div>
+            <div class=col>
+            <div id="RFT_OnTime_Late" class="graph"><span>On Time vs Late</div>
             </div>
 
-            <div class=col-sm>
-            <div id="order_type" class="graph"><span>Order Type</span></div>
+            <div class=col>
+            <div id="RFT_Perc" class="graph"><span>RFT Performance</span></div>
             </div>
-
             </div>
         <!--Row section title-->
             <div class ="row section-title">
-            RFT INFOGRAPH
+            RFT TABLE
             </div>
         <!-- row RFT graphs-->
-            <div class="row RFT_perf">
-
-            <div class=col-sm>
-            <div id="ct_avg" class="graph"><span>Cycle Time Avg</span></div>
+            <div class="row RFT_table">
             </div>
 
-            <div class=col-sm>
-            <div id="ct_perf" class="graph"><span>Cycle Time Performance</span></div>
-            </div>
-
-            <div class=col-sm>
-            <div id="ontime_perf" class="graph"><span>RFT Performance</span>
-            </div>
-            </div>
-
-            </div>
-
-            </div>
         </div>
 
     </div>
