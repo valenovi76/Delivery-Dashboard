@@ -154,10 +154,11 @@ h3{
 text-align:center;
 }
 
-#ct_perf{
+#ontime_perf{
     background-color: #fb8c00;
-text-align:center;
+    text-align:center;
 }
+
 .axis {
   /*font-size: /* Insert font size */
   color: whitesmoke;

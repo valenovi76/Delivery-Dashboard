@@ -27,7 +27,7 @@ d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
     show_ontime_late(ndx);
     show_percent_RFT_OnTime(ndx);
     show_percent_CT_Pass(ndx);
-    //show_monthly_delivery(ndx);
+    show_monthly_delivery(ndx);
 
 
 
@@ -132,8 +132,38 @@ function show_percent_CT_Pass(ndx) {
 }
 
 //KPIS values - Monthly deliveries
+function show_monthly_delivery(ndx){
+    var avgMonthlyDeliveries = ndx.groupAll().reduce(
+        function(p, v) {
+            p.total++;
+                if(v.Order_Status === "Completed") {
+                    p.match++;
+                }
+                return p;
+            },
+            function (p, v) {
+                p.total--;
+                if(v.Order_Status === "Completed") {
+                    p.match--;
+                }
+                return p;
+            },
+            function () {
+                return {total: 0, match: 0};
+            }
+    );
 
-
+    dc.numberDisplay("#avg_monthly_delivery")
+        .formatNumber(d3.format(".1f"))
+        .valueAccessor(function (d) {
+            if (d.total == 0) {
+                return 0;
+            } else {
+                return ( d.match/6 );
+            }
+        })
+        .group(avgMonthlyDeliveries)
+}
 
 
 //created line js
