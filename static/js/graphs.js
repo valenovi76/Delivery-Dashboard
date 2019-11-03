@@ -26,8 +26,8 @@ d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
     show_SLT_perf(ndx);
     show_ontime_late(ndx);
     show_percent_RFT_OnTime(ndx);
-
-
+    show_percent_CT_Pass(ndx);
+    //show_monthly_delivery(ndx);
 
 
 
@@ -61,7 +61,8 @@ function show_project_selector(ndx){
 
 }
 
-// KPIS values
+// KPIS values -RFT %
+
 function show_percent_RFT_OnTime(ndx) {
     var percentageThatAreOnTime = ndx.groupAll().reduce(
         function(p, v) {
@@ -94,6 +95,45 @@ function show_percent_RFT_OnTime(ndx) {
         })
         .group(percentageThatAreOnTime)
 }
+
+// KPIS values - CT %
+
+function show_percent_CT_Pass(ndx) {
+    var percentageThatArePassed = ndx.groupAll().reduce(
+        function(p, v) {
+            p.total++;
+                if(v.SLT_Status === "Pass") {
+                    p.match++;
+                }
+                return p;
+            },
+            function (p, v) {
+                p.total--;
+                if(v.SLT_Status === "Pass") {
+                    p.match--;
+                }
+                return p;
+            },
+            function () {
+                return {total: 0, match: 0};
+            }
+    );
+
+    dc.numberDisplay("#CTPerc")
+        .formatNumber(d3.format(".1%"))
+        .valueAccessor(function (d) {
+            if (d.count == 0) {
+                return 0;
+            } else {
+                return ( d.match/d.total );
+            }
+        })
+        .group(percentageThatArePassed)
+}
+
+//KPIS values - Monthly deliveries
+
+
 
 
 //created line js
@@ -243,25 +283,6 @@ function show_SLT_perf(ndx){
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});
 }
-//OnTime vs Late js
-
-   //function show_ontime_late(ndx){
-    //var dim = ndx.dimension(dc.pluck('On_Time'));
-    //var group = dim.group();
-
-    //dc.barChart("#ontime_perf")
-    //.width(400)
-        //.height(300)
-        //.margins({top: 10, right: 50, bottom: 30, left: 50})
-        //.dimension(dim)
-        //.group(group)
-        //.transitionDuration(500)
-        //.x(d3.scale.ordinal())
-        //.xUnits(dc.units.ordinal)
-        //.xAxisLabel("RFTPerf")
-        //.yAxis().ticks(20);
-   //}
-
 
   //On time vs Late stacked-bars graph
 
