@@ -13,7 +13,7 @@ function makeGraphs(error, orderData) {
 orderData.forEach(function(d){
 d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
 
-var tableChart = dc.dataTable("#RFT_table");
+
 
 
     show_wip_group_selector(ndx);
@@ -28,7 +28,9 @@ var tableChart = dc.dataTable("#RFT_table");
     show_percent_RFT_OnTime(ndx);
     show_percent_CT_Pass(ndx);
     show_monthly_delivery(ndx);
-    show_RFT_OnTime_Late(ndx);
+    show_delivery_Product(ndx);
+    show_delivery_Project(ndx);
+    show_delivery_country(ndx);
 
 
     dc.renderAll();
@@ -348,10 +350,28 @@ function show_ontime_late(ndx) {
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});
    }
-//RFT_OnTime_Late js, RFT page
 
-function show_RFT_OnTime_Late(ndx) {
-    function RFTPerfByMonthb(dimension, On_Time) {
+
+//delivery_Product(ndx);
+function show_delivery_Product(ndx){
+var dim = ndx.dimension(dc.pluck('Product'));
+    var group = dim.group();
+
+
+    dc.pieChart("#del_product")
+
+        .width(400)
+        .height(300)
+        .slicesCap(4)
+        .innerRadius(100)
+        .dimension(dim)
+        .group(group)
+        .legend(dc.legend())
+
+}
+//show_delivery_Project(ndx);
+function show_delivery_Project(ndx) {
+    function delbyproject(dimension, On_Time) {
         return dimension.group().reduce(
             function (p, v) {
                 p.total++;
@@ -373,11 +393,11 @@ function show_RFT_OnTime_Late(ndx) {
         );
     }
 
-    var dim = ndx.dimension(dc.pluck("Completed_Month"));
-    var OnTimeByMonth = RFTPerfByMonthb(dim, "On-Time");
-    var LateByMonth = RFTPerfByMonthb(dim, "Late");
+    var dim = ndx.dimension(dc.pluck("Project_Order"));
+    var OnTimeByMonth = delbyproject(dim, "On-Time");
+    var LateByMonth = delbyproject(dim, "Late");
 
-    dc.barChart("#RFT_OnTime_Late")
+    dc.barChart("#del_project")
         .width(400)
         .height(300)
         .dimension(dim)
@@ -385,7 +405,7 @@ function show_RFT_OnTime_Late(ndx) {
         .stack(LateByMonth, "Late")
         .valueAccessor(function(d) {
             if(d.value.total > 0) {
-                return (d.value.match);
+                return (d.value.match / d.value.total) * 100;
             } else {
                 return 0;
             }
@@ -394,5 +414,37 @@ function show_RFT_OnTime_Late(ndx) {
         .xUnits(dc.units.ordinal)
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});
+   }
 
+
+//show_delivery_country(ndx);
+function show_delivery_country(ndx){
+var countryColors = d3.scale.ordinal()
+        .domain(["On-Time", "Late"])
+        .range(["green", "red"]);
+
+    var eDim = ndx.dimension(dc.pluck("Country"));
+    var experienceDim = ndx.dimension(function(d) {
+       return [d.product, d.On_Time, d.country, d.CT_Ex_Delayed_Days];
+    });
+    var experienceSalaryGroup = experienceDim.group();
+
+    var minCT = eDim.bottom(1)[0].CT_Ex_Delayed_Days;
+    var maxCT = eDim.top(1)[0].CT_Ex_Delayed_Days;
+
+    dc.scatterPlot("#del_project")
+        .width(800)
+        .height(400)
+        .x(d3.scale.linear().domain([minCT, maxCT]))
+        .brushOn(false)
+        .symbolSize(8)
+        .clipPadding(10)
+        .xAxisLabel("CTDays")
+        .colorAccessor(function (d) {
+            return d.key[3];
+        })
+        .colors(countryColors)
+        .dimension(experienceDim)
+        .group(experienceSalaryGroup)
+        .margins({top: 10, right: 50, bottom: 75, left: 75});
 }
