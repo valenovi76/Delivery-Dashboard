@@ -13,7 +13,7 @@ function makeGraphs(error, orderData) {
 orderData.forEach(function(d){
 d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
 
-
+var tableChart = dc.dataTable("#RFT_table");
 
 
     show_wip_group_selector(ndx);
@@ -350,9 +350,8 @@ function show_ontime_late(ndx) {
    }
 //RFT_OnTime_Late js, RFT page
 
-    function show_RFT_OnTime_Late(ndx) {
-    function RFTPerfByMonth(dimension, On_Time) {
-        var chart = dc.dataTable("#RFT_Table");
+function show_RFT_OnTime_Late(ndx) {
+    function RFTPerfByMonthb(dimension, On_Time) {
         return dimension.group().reduce(
             function (p, v) {
                 p.total++;
@@ -373,34 +372,27 @@ function show_ontime_late(ndx) {
             }
         );
     }
-    var dim = ndx.dimension(dc.pluck("Completed_Month"));
-    var OnTimeByMonth = RFTPerfByMonth(dim, "On-Time");
-    var LateByMonth = RFTPerfByMonth(dim, "Late");
 
-  chart
-    .width(768)
-    .height(480)
-    .showSections(false)
-    .dimension(reversible_group(avgGroup))
-    .columns([function (d) { return d.key },
-              function (d) { return d.value.number },
-              function (d) { return d.value.avg }])
-    .sortBy(function (d) { return d.value.avg })
-    .order(d3.descending)
-  chart.render();
-  function reversible_group(group) {
-      return {
-          top: function(N) {
-              return group.top(N);
-          },
-          bottom: function(N) {
-              return group.top(Infinity).slice(-N).reverse();
-          }
-      };
-  }
-  d3.selectAll('#select-direction input')
-      .on('click', function() {
-          // this.value is 'ascending' or 'descending'
-          chart.order(d3[this.value]).redraw()
-      });
-});
+    var dim = ndx.dimension(dc.pluck("Completed_Month"));
+    var OnTimeByMonth = RFTPerfByMonthb(dim, "On-Time");
+    var LateByMonth = RFTPerfByMonthb(dim, "Late");
+
+    dc.barChart("#RFT_OnTime_Late")
+        .width(400)
+        .height(300)
+        .dimension(dim)
+        .group(OnTimeByMonth, "On-Time")
+        .stack(LateByMonth, "Late")
+        .valueAccessor(function(d) {
+            if(d.value.total > 0) {
+                return (d.value.match);
+            } else {
+                return 0;
+            }
+        })
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
+        .margins({top: 10, right: 100, bottom: 30, left: 30});
+
+}
