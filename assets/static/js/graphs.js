@@ -1,6 +1,6 @@
 //load data
 queue()
-.defer(d3.csv, "/data/orders.csv")
+.defer(d3.csv, "/assets/data/orders.csv")
 .await(makeGraphs);
 
 
@@ -28,7 +28,7 @@ d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
     show_percent_RFT_OnTime(ndx);
     show_percent_CT_Pass(ndx);
     show_monthly_delivery(ndx);
-
+    show_RFT_OnTime_Late(ndx);
 
 
     dc.renderAll();
@@ -60,9 +60,7 @@ function show_project_selector(ndx){
         .group(group);
 
 }
-
 // KPIS values -RFT %
-
 function show_percent_RFT_OnTime(ndx) {
     var percentageThatAreOnTime = ndx.groupAll().reduce(
         function(p, v) {
@@ -95,9 +93,7 @@ function show_percent_RFT_OnTime(ndx) {
         })
         .group(percentageThatAreOnTime)
 }
-
 // KPIS values - CT %
-
 function show_percent_CT_Pass(ndx) {
     var percentageThatArePassed = ndx.groupAll().reduce(
         function(p, v) {
@@ -130,7 +126,6 @@ function show_percent_CT_Pass(ndx) {
         })
         .group(percentageThatArePassed)
 }
-
 //KPIS values - Monthly deliveries
 function show_monthly_delivery(ndx){
     var avgMonthlyDeliveries = ndx.groupAll().reduce(
@@ -164,8 +159,6 @@ function show_monthly_delivery(ndx){
         })
         .group(avgMonthlyDeliveries)
 }
-
-
 //created line js
 function show_created(ndx) {
 var dim = ndx.dimension(dc.pluck('Created_Month'));
@@ -184,7 +177,6 @@ dc.lineChart("#created")
 .xAxisLabel("FY 2019-2020 Month")
 .yAxis().ticks(20);
  }
-
 //completed line js
 function show_completed(ndx) {
 var dim = ndx.dimension(dc.pluck('Completed_Month'));
@@ -204,7 +196,6 @@ dc.lineChart("#completed")
 .xAxisLabel("FY 2019-2020 Month")
 .yAxis().ticks(20);
  }
-
 //WIP pie js
 function show_order_order_type(ndx) {
     var dim = ndx.dimension(dc.pluck('Order_Type'));
@@ -225,7 +216,6 @@ function show_order_order_type(ndx) {
 //CT Avg line js
 function show_ct_avg(ndx){
 var dim = ndx.dimension(dc.pluck("Completed_Month"));
-
 function add_item(p,v){
 p.count ++;
 p.total += v.CT_Ex_Delayed_Days;
@@ -268,7 +258,6 @@ return d.value.average})
 }
 //CT perf js
 function show_SLT_perf(ndx){
-
     function SLTPerfByMonth(dimension, SLT_Status) {
         return dimension.group().reduce(
             function (p, v) {
@@ -313,11 +302,8 @@ function show_SLT_perf(ndx){
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});
 }
-
-  //On time vs Late stacked-bars graph
-
-   function show_ontime_late(ndx) {
-
+//On time vs Late stacked-bars graph
+function show_ontime_late(ndx) {
     function RFTPerfByMonth(dimension, On_Time) {
         return dimension.group().reduce(
             function (p, v) {
@@ -362,3 +348,59 @@ function show_SLT_perf(ndx){
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});
    }
+//RFT_OnTime_Late js, RFT page
+
+    function show_RFT_OnTime_Late(ndx) {
+    function RFTPerfByMonth(dimension, On_Time) {
+        var chart = dc.dataTable("#RFT_Table");
+        return dimension.group().reduce(
+            function (p, v) {
+                p.total++;
+                if(v.On_Time == On_Time) {
+                    p.match++;
+                }
+                return p;
+            },
+            function (p, v) {
+                p.total--;
+                if(v.On_Time == On_Time) {
+                    p.match--;
+                }
+                return p;
+            },
+            function () {
+                return {total: 0, match: 0};
+            }
+        );
+    }
+    var dim = ndx.dimension(dc.pluck("Completed_Month"));
+    var OnTimeByMonth = RFTPerfByMonth(dim, "On-Time");
+    var LateByMonth = RFTPerfByMonth(dim, "Late");
+
+  chart
+    .width(768)
+    .height(480)
+    .showSections(false)
+    .dimension(reversible_group(avgGroup))
+    .columns([function (d) { return d.key },
+              function (d) { return d.value.number },
+              function (d) { return d.value.avg }])
+    .sortBy(function (d) { return d.value.avg })
+    .order(d3.descending)
+  chart.render();
+  function reversible_group(group) {
+      return {
+          top: function(N) {
+              return group.top(N);
+          },
+          bottom: function(N) {
+              return group.top(Infinity).slice(-N).reverse();
+          }
+      };
+  }
+  d3.selectAll('#select-direction input')
+      .on('click', function() {
+          // this.value is 'ascending' or 'descending'
+          chart.order(d3[this.value]).redraw()
+      });
+});
