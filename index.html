@@ -52,7 +52,7 @@
                         <h3>Delivery KPIs Dashboard</h3>
                         <div class="row kpis">
                             <div class="card-group mx-auto">
-                                <div class="card flex-fill bg-primary text-white mx-3 rounded">
+                                <div class="card flex-fill bg-primary text-white mx-3 rounded" title ="The Right First Time performance (RFT) indicates the number of orders delivered on or before the Customer Committed Date">
                                     <div class="card-header">
                                         <h5 class="card-title text-white mb-0 rounded">RFT TgT 95%</h5>
                                     </div>
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card flex-fill bg-danger text-white mx-3 rounded">
+                                <div class="card flex-fill bg-danger text-white mx-3 rounded" title = "The Cycle Time Performance (CT), is calculated on the number of orders delivered within the Lead Time Target for the specific Product and Delivery Type">
                                     <div class="card-header">
                                         <h5 class="card-title text-white mb-0 rounded">CT Tgt 94%</h5>
                                     </div>
@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card flex-fill bg-warning text-white mx-3 rounded">
+                                <div class="card flex-fill bg-warning text-white mx-3 rounded" title = "The Monthly Average Delivery volume is an internal metric calculating the average of orders delivered within a financial period">
                                     <div class="card-header">
                                         <h5 class="card-title text-white mb-0 rounded">Del Tgt 200</h5>
                                     </div>
@@ -116,7 +116,7 @@
 
             </div>
         <!-- row selectors-->
-            <div class="row selectors">
+            <div class="row selectors" title = "These filters can be applied to all the graphs in the dashboard">
             <div class="col-md">
             <div id="wip_group_selector">Select Channel<br></br></div>
             </div>
@@ -135,15 +135,15 @@
             <div class="row WIP">
 
             <div class=col-sm>
-            <div id="created" class="graph"><span>Created Orders</div>
+            <div id="created" class="graph" title ="Created Orders per Financial Period (April to March)"><span>Created Orders</div>
             </div>
 
             <div class=col-sm>
-            <div id="completed" class="graph"><span>Completed Orders</span></div>
+            <div id="completed" class="graph" title ="Completed Orders per Financial Period (April to March)"><span>Completed Orders</span></div>
             </div>
 
             <div class=col-sm>
-            <div id="order_type" class="graph"><span>Order Type</span></div>
+            <div id="order_type" class="graph" title="Volume of Orders by Order Type"><span>Order Type</span></div>
             </div>
 
             </div>
@@ -154,13 +154,13 @@
         <!-- row RFT graphs-->
             <div class="row RFT_perf">
                     <div class=col-sm>
-                        <div id="ct_avg" class="graph"><span>Cycle Time Avg</span></div>
+                        <div id="ct_avg" class="graph" title ="Average of working days needed to complete an orders, without customer delayed days"><span>Cycle Time Avg</span></div>
                     </div>
                     <div class=col-sm>
-                        <div id="ct_perf" class="graph"><span>Cycle Time Performance</span></div>
+                        <div id="ct_perf" class="graph" title ="Percentage of Orders delivered withing the Lead Targets for the Product and the Delivery Type"><span>Cycle Time Performance</span></div>
                     </div>
                     <div class=col-sm>
-                        <div id="ontime_perf" class="graph"><span>RFT Performance</span></div>
+                        <div id="ontime_perf" class="graph" title ="Monthly volume of Orders delivered On Time or Late, using the Customer Committed Date as reference. "><span>RFT Performance</span></div>
                      </div>
             </div>
         </div>
@@ -172,13 +172,13 @@
         <!-- row RFT graphs-->
             <div class="row RFT_perf">
                     <div class=col-sm>
-                        <div id="del_product" class="graph"><span>Delvieries by Product</span></div>
+                        <div id="del_product" class="graph" title = "Volume of Orders Delivered by Products"><span>Delveries by Product</span></div>
                     </div>
                     <div class=col-sm>
-                        <div id="del_country" class="graph"><span>Deliveries by Country</span></div>
+                        <div id="del_country" class="graph" title="Volume of Orders Delivered by Products"><span>Deliveries by Country</span></div>
                     </div>
                     <div class=col-sm>
-                        <div id="del_project" class="graph"><span>Delivery by Project</span></div>
+                        <div id="del_project" class="graph" title ="Volume of Orders Delivered by Project"><span>Delivery by Project</span></div>
                      </div>
             </div>
         </div>

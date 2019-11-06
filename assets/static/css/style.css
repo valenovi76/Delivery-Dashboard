@@ -4,9 +4,8 @@ body{
     color:#3c4858;
 
 }
-
-.chart{
-    color:balck;}
+.dc-legend {
+  font-size: 8px !important }
 /*Header*/
 
 .kpis{
@@ -150,7 +149,7 @@ h3{
 }
 
 #ct_perf{
-    background-color: lightseagreen;
+    background-color: rgb(29, 19, 49);
 text-align:center;
 }
 
@@ -158,6 +157,15 @@ text-align:center;
     background-color: #fb8c00;
     text-align:center;
 }
+#del_product{
+    background-color: #913f9e;
+    text-align:center;
+}
+#del_country{background-color:#48a357;
+    text-align:center;}
+
+#del_project{background-color: #d93733;
+    text-align:center;}
 
 .axis {
   /*font-size: /* Insert font size */
