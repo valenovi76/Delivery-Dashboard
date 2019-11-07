@@ -118,58 +118,58 @@ Business,Cancelled, One Voice Global SIP,New,International,01/04/2019,01/07/2019
 Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/05/2019,COATESL,FALSE,On-Time,17,100,Pass,0.95,0.94,0.09,0.03,Completed,BAU,France
 Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/05/2019,COATESL,FALSE,On-Time,29,100,Pass,0.95,0.94,0.09,0.03,Completed,BAU,France
 Business,Completed, One Voice Global SIP,New,Standard Global,01/04/2019,01/05/2019,COATESL,FALSE,On-Time,29,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,France
-Carrier,Completed, Carrier Services Private Line National,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,COATESL,FALSE,On-Time,7,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, Etherflow/IP,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,COATESL,FALSE,On-Time,8,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Cancelled, One Voice Global SIP,New,International,01/04/2019,01/07/2019,COATESL,TRUE,N/A,0,100,,0.95,0.94,0.09,0.03,BAU,BAU,Geramany
-Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, Etherway Access Only,New,Quick Connect,01/04/2019,01/04/2019,GIFFNEK,FALSE,On-Time,13,15,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, Business Voice,New,Standard Domestic,01/04/2019,01/06/2019,GIFFNEK,FALSE,On-Time,51,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, Business Voice,New,Non-Standard,01/04/2019,01/06/2019,GIFFNEK,FALSE,On-Time,21,60,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, Etherflow,New,Non-Standard,01/04/2019,01/05/2019,GIFFNEK,FALSE,On-Time,29,60,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,2,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,2,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,5,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,2,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/09/2019,DRIVERI,FALSE,Late,114,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,40,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/07/2019,,FALSE,N/A,0,15,,0.95,0.94,0.09,0.03,BAU,BAU,Geramany
-Business,Cancelled, Carrier Services Private Line National,New,3rd Party Standard,01/04/2019,01/07/2019,LYONSR3,FALSE,N/A,0,50,,0.95,0.94,0.09,0.03,Backlog,BAU,Geramany
-Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/08/2019,COATESL,FALSE,On-Time,76,100,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/04/2019,GIFFNEK,TRUE,On-Time,7,100,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, Carrier Services Private Line National,New,Non-Standard,01/04/2019,01/08/2019,HEJLOVS,FALSE,On-Time,40,60,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, Etherflow,New,International,01/04/2019,01/08/2019,COATESL,FALSE,On-Time,98,100,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, Etherflow,New,International,01/04/2019,01/08/2019,COATESL,FALSE,On-Time,98,100,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed,Wan Matrix,Cancellation,Cancellation International,01/04/2019,01/09/2019,LYONSR3,FALSE,On-Time,105,40,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed,Wan Matrix,Cancellation,Cancellation International 3rd Party,01/04/2019,01/08/2019,GIFFNEK,FALSE,On-Time,85,40,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed,Wan Matrix,Cancellation,Cancellation International 3rd Party,01/04/2019,01/08/2019,DJEMAIM,FALSE,On-Time,90,40,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, Etherflow,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,CONNOLH2,FALSE,On-Time,6,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, Etherway,Cancellation,Cancellation Domestic,01/04/2019,01/06/2019,LYONSR3,FALSE,On-Time,54,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, Etherflow/IP Connect Global,New,3rd Party Standard,01/04/2019,01/07/2019,BRADYA,FALSE,On-Time,74,50,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Carrier,Completed, Etherflow,New,Quick Connect,01/04/2019,01/05/2019,LYONSR3,FALSE,On-Time,32,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Carrier,Completed, Etherflow,SD Upgrade/Downgrade,Quick Connect,01/04/2019,01/04/2019,DUFFYM,FALSE,On-Time,3,15,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, Internet Access National,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,COATESL,FALSE,On-Time,6,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/08/2019,COATESL,FALSE,On-Time,94,100,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Carrier,Completed, Etherflow,New,3rd Party Standard,01/04/2019,01/05/2019,LYONSR3,FALSE,On-Time,35,50,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Carrier,Cancelled, Etherflow,New,Non-Standard,01/04/2019,01/07/2019,LYONSR3,FALSE,N/A,0,60,,0.95,0.94,0.09,0.03,Backlog,Sky,Geramany
-Business,Completed, MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/06/2019,BRADYA,FALSE,On-Time,52,40,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Carrier,Completed, Etherway,Cancellation,Cancellation Domestic,01/04/2019,01/05/2019,LYONSR3,FALSE,On-Time,24,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/07/2019,,FALSE,N/A,0,15,,0.95,0.94,0.09,0.03,BAU,Sky,Geramany
-Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/07/2019,,FALSE,N/A,0,15,,0.95,0.94,0.09,0.03,BAU,Sky,Geramany
-Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic,01/04/2019,01/07/2019,,FALSE,N/A,0,15,,0.95,0.94,0.09,0.03,BAU,Sky,Geramany
-Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,,FALSE,Late,0,15,Pass,0.95,0.94,0.09,0.03,BAU,Sky,Geramany
-Business,Completed, Business Voice,New,Quick Connect,01/04/2019,01/09/2019,GIFFNEK,FALSE,On-Time,63,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/05/2019,COATESL,FALSE,On-Time,27,100,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Carrier,Completed, Etherflow,New,3rd Party Standard,01/04/2019,01/05/2019,SMARTTEM,FALSE,On-Time,32,50,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
-Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,8,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Geramany
+Carrier,Completed, Carrier Services Private Line National,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,COATESL,FALSE,On-Time,7,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, Etherflow/IP,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,COATESL,FALSE,On-Time,8,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Cancelled, One Voice Global SIP,New,International,01/04/2019,01/07/2019,COATESL,TRUE,N/A,0,100,,0.95,0.94,0.09,0.03,BAU,BAU,Germany
+Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, Etherway Access Only,New,Quick Connect,01/04/2019,01/04/2019,GIFFNEK,FALSE,On-Time,13,15,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, Business Voice,New,Standard Domestic,01/04/2019,01/06/2019,GIFFNEK,FALSE,On-Time,51,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, Business Voice,New,Non-Standard,01/04/2019,01/06/2019,GIFFNEK,FALSE,On-Time,21,60,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, Etherflow,New,Non-Standard,01/04/2019,01/05/2019,GIFFNEK,FALSE,On-Time,29,60,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,2,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,2,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,5,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,2,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/09/2019,DRIVERI,FALSE,Late,114,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,42,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Internal,Completed, Private Line National,New,Standard Domestic,01/04/2019,01/06/2019,ROWLEYN,FALSE,Late,40,25,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/07/2019,,FALSE,N/A,0,15,,0.95,0.94,0.09,0.03,BAU,BAU,Germany
+Business,Cancelled, Carrier Services Private Line National,New,3rd Party Standard,01/04/2019,01/07/2019,LYONSR3,FALSE,N/A,0,50,,0.95,0.94,0.09,0.03,Backlog,BAU,Germany
+Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/08/2019,COATESL,FALSE,On-Time,76,100,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/04/2019,GIFFNEK,TRUE,On-Time,7,100,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, Carrier Services Private Line National,New,Non-Standard,01/04/2019,01/08/2019,HEJLOVS,FALSE,On-Time,40,60,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, Etherflow,New,International,01/04/2019,01/08/2019,COATESL,FALSE,On-Time,98,100,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, Etherflow,New,International,01/04/2019,01/08/2019,COATESL,FALSE,On-Time,98,100,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,4,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed,Wan Matrix,Cancellation,Cancellation International,01/04/2019,01/09/2019,LYONSR3,FALSE,On-Time,105,40,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed,Wan Matrix,Cancellation,Cancellation International 3rd Party,01/04/2019,01/08/2019,GIFFNEK,FALSE,On-Time,85,40,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed,Wan Matrix,Cancellation,Cancellation International 3rd Party,01/04/2019,01/08/2019,DJEMAIM,FALSE,On-Time,90,40,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, Etherflow,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,CONNOLH2,FALSE,On-Time,6,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, Etherway,Cancellation,Cancellation Domestic,01/04/2019,01/06/2019,LYONSR3,FALSE,On-Time,54,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, Etherflow/IP Connect Global,New,3rd Party Standard,01/04/2019,01/07/2019,BRADYA,FALSE,On-Time,74,50,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Carrier,Completed, Etherflow,New,Quick Connect,01/04/2019,01/05/2019,LYONSR3,FALSE,On-Time,32,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Carrier,Completed, Etherflow,SD Upgrade/Downgrade,Quick Connect,01/04/2019,01/04/2019,DUFFYM,FALSE,On-Time,3,15,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, Internet Access National,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,COATESL,FALSE,On-Time,6,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/08/2019,COATESL,FALSE,On-Time,94,100,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Carrier,Completed, Etherflow,New,3rd Party Standard,01/04/2019,01/05/2019,LYONSR3,FALSE,On-Time,35,50,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Carrier,Cancelled, Etherflow,New,Non-Standard,01/04/2019,01/07/2019,LYONSR3,FALSE,N/A,0,60,,0.95,0.94,0.09,0.03,Backlog,Sky,Germany
+Business,Completed, MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/06/2019,BRADYA,FALSE,On-Time,52,40,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Carrier,Completed, Etherway,Cancellation,Cancellation Domestic,01/04/2019,01/05/2019,LYONSR3,FALSE,On-Time,24,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/07/2019,,FALSE,N/A,0,15,,0.95,0.94,0.09,0.03,BAU,Sky,Germany
+Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/07/2019,,FALSE,N/A,0,15,,0.95,0.94,0.09,0.03,BAU,Sky,Germany
+Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic,01/04/2019,01/07/2019,,FALSE,N/A,0,15,,0.95,0.94,0.09,0.03,BAU,Sky,Germany
+Business,Cancelled, One Voice Global SIP,Cancellation,Cancellation Domestic,01/04/2019,01/04/2019,,FALSE,Late,0,15,Pass,0.95,0.94,0.09,0.03,BAU,Sky,Germany
+Business,Completed, Business Voice,New,Quick Connect,01/04/2019,01/09/2019,GIFFNEK,FALSE,On-Time,63,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, One Voice Global SIP,New,International,01/04/2019,01/05/2019,COATESL,FALSE,On-Time,27,100,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Carrier,Completed, Etherflow,New,3rd Party Standard,01/04/2019,01/05/2019,SMARTTEM,FALSE,On-Time,32,50,Pass,0.95,0.94,0.09,0.03,Completed,Sky,Germany
+Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,8,15,Fail,0.95,0.94,0.09,0.03,Completed,Sky,Germany
 Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,6,15,Fail,0.95,0.94,0.09,0.03,Completed,Italy,Italy
 Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,8,15,Fail,0.95,0.94,0.09,0.03,Completed,Italy,Italy
 Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/04/2019,DRIVERI,FALSE,On-Time,6,15,Fail,0.95,0.94,0.09,0.03,Completed,Italy,Italy
@@ -387,14 +387,14 @@ Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation
 Business,Completed, DSL/ IP Connect Ireland -Bitstream,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/05/2019,DRIVERI,FALSE,On-Time,6,15,Fail,0.95,0.94,0.09,0.03,Completed,Italy,Italy
 Business,Completed, Internet Connect,New,International,01/04/2019,01/09/2019,DRIVERI,TRUE,Late,102,100,Fail,0.95,0.94,0.09,0.03,Completed,Italy,Italy
 Business,Completed, Private Line National,Cancellation,Cancellation Domestic,01/04/2019,01/05/2019,GIFFNEK,FALSE,On-Time,5,15,Fail,0.95,0.94,0.09,0.03,Completed,Italy,Italy
-Business,Completed, xDSL / MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/06/2019,DRIVERI,FALSE,On-Time,37,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, Etherflow/IP,New,Non-Standard,01/04/2019,01/05/2019,DUFFYM,FALSE,On-Time,24,60,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Carrier,Completed, Etherway,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/07/2019,LYONSR3,FALSE,On-Time,52,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed,Wan Matrix,Cancellation,Cancellation International 3rd Party,01/04/2019,01/09/2019,COATESL,FALSE,On-Time,91,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Carrier,Completed, MPLS,Cancellation,Cancellation International,01/04/2019,01/05/2019,CORCORC3,FALSE,On-Time,24,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Carrier,Completed, MPLS,Cancellation,Cancellation International,01/04/2019,01/05/2019,CORCORC3,FALSE,On-Time,24,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/05/2019,DRIVERI,FALSE,On-Time,23,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
-Business,Completed, MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/06/2019,DRIVERI,FALSE,On-Time,42,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Geramany
+Business,Completed, xDSL / MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/06/2019,DRIVERI,FALSE,On-Time,37,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, Etherflow/IP,New,Non-Standard,01/04/2019,01/05/2019,DUFFYM,FALSE,On-Time,24,60,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Carrier,Completed, Etherway,Cancellation,Cancellation Domestic 3rd Party,01/04/2019,01/07/2019,LYONSR3,FALSE,On-Time,52,15,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed,Wan Matrix,Cancellation,Cancellation International 3rd Party,01/04/2019,01/09/2019,COATESL,FALSE,On-Time,91,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Carrier,Completed, MPLS,Cancellation,Cancellation International,01/04/2019,01/05/2019,CORCORC3,FALSE,On-Time,24,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Carrier,Completed, MPLS,Cancellation,Cancellation International,01/04/2019,01/05/2019,CORCORC3,FALSE,On-Time,24,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/05/2019,DRIVERI,FALSE,On-Time,23,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
+Business,Completed, MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/06/2019,DRIVERI,FALSE,On-Time,42,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Germany
 Business,Completed, MPLS,Cancellation,Cancellation International 3rd Party,01/04/2019,01/05/2019,DRIVERI,FALSE,On-Time,24,40,Fail,0.95,0.94,0.09,0.03,Completed,BAU,Spain
 Business,Completed, MPLS,SD Upgrade/Downgrade,International,01/04/2019,01/05/2019,DJEMAIM_X,FALSE,On-Time,13,100,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Spain
 Business,Completed, Internet Connect,New,International,01/04/2019,01/08/2019,UGWUANE,TRUE,On-Time,75,100,Pass,0.95,0.94,0.09,0.03,Completed,BAU,Spain

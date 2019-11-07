@@ -13,7 +13,20 @@ function makeGraphs(error, orderData) {
 orderData.forEach(function(d){
 d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
 
+var parseDate = d3.time.format("%d/%m/%Y").parse;
+    orderData.forEach(function(d){
+        d.Completed_Month = parseDate(d.Completed_Month);
 
+    });
+
+
+//var parseDate2 = d3.time.format("%B").parse;
+  //  orderData.forEach(function(d){
+    //    d.Created_Month = parseDate2(d.Created_Month);
+    //});
+
+
+ 
 
 
     show_wip_group_selector(ndx);
@@ -30,7 +43,7 @@ d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
     show_monthly_delivery(ndx);
     show_delivery_Product(ndx);
     show_delivery_Project(ndx);
-    //show_delivery_countryRFTcorrelation(ndx);
+    show_delivery_country_composite(ndx);
 
 
     dc.renderAll();
@@ -165,7 +178,6 @@ function show_monthly_delivery(ndx){
 function show_created(ndx) {
 var dim = ndx.dimension(dc.pluck('Created_Month'));
 var group =dim.group();
-
 dc.lineChart("#created")
 
 .width(400)
@@ -353,8 +365,6 @@ function show_ontime_late(ndx) {
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});
    }
-
-
 //delivery_Product(ndx);
 function show_delivery_Product(ndx){
 var dim = ndx.dimension(dc.pluck('Product'));
@@ -419,75 +429,66 @@ function show_delivery_Project(ndx) {
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});
    }
+//Delivery Country RFT composite
+   function show_delivery_country_composite(ndx){
 
-   //Delivery Country RFT composite
-   //function show_delivery_countryRFTcorrelation(ndx){
-       //var Timedim = ndx.dimension (dc.pluck("CompletedMonths"));
-       //var CTDim = ndx.dimension(dc.pluck("CT_Ex_Delayed_Days"))
-       //var minCT = CTdim.bottom(1)[0];
-        //var maxCT = CTdim.top(1)[0];
-        //function CTByCountry(dimension, Country) {
-        //return dimension.group().reduce(
-            //function add_item(p, v) {
-                //p.count ++;
-                //if(v.Country == Country) {
-                    //p.total += v.CT_Ex_Delayed_Days;
-                    //p.average = p.total/p.count;
-                //}
-                //return p;
-            //},
-            //function remove_item(p, v) {
-               // p.count--;
-               // if(p.count==0){
-               // p.total=0;
-               // p.average=0;}else{
-               // if(v.Country== Country) {
-                //    p.total -= v.CT_Ex_Delayed_Days;
-                 //   p.average = p.total/p.count;
-                //}
-                //return p;
-            //}},
-            //function initialise(){
-            //return{count:0, total:0, average:0};
-            //})
+        var Timedim = ndx.dimension (dc.pluck("Completed_Month"))
+        var minDate = Timedim.bottom(1)[0].date;
+        console.log(Timedim);
+ 	    var maxDate = Timedim.top(1)[0].date;
 
-        //};
 
-    //var FranceCT = Country.group().reduceSum(CTAvg("France"));
-    //var ItalyCT = Country.group().reduceSum(CTAvg("Italy"));
-    //var SpainCT = Country.group().reduceSum(CTAvg("Spain"));
-    //var GermanyCT = Country.group().reduceSum(CTAvg("Germany"));
-    //var SwitzerlandCT = Country.group().reduceSum(CTAvg("Switzerland"));
-    //var compositeChart = dc.compositeChart('#del_country');
 
-   // compositeChart
-       // .width(900)
-        //.height(500)
-        //.dimension(date_dim)
-       // .x(d3.time.scale().domain([minDate, maxDate]))
-       // .xAxisLabel("Month")
-        //.yAxisLabel("Hours Training")
-        //.margins({top: 40, right: 50, bottom: 50, left: 140})
-        //.legend(dc.legend().x(35).y(20).itemHeight(13).gap(10))
-        //.renderHorizontalGridLines(true)
-		//.renderVerticalGridLines(true)
-    //.compose([
+       function CTByCountry (Country){
+        return function(d){
+            if (d.Country === Country)
+
+            {;
+                return d.CT_Ex_Delayed_Days;
+
+            }else {
+                return 0;
+            }
+        };
+
+    }
+
+    var FranceCT = Timedim.group().reduceSum(CTByCountry("France"));
+    var ItalyCT = Timedim.group().reduceSum(CTByCountry("Italy"));
+    var SpainCT = Timedim.group().reduceSum(CTByCountry("Spain"));
+    //var GermanyCT = Timedim.group().reduceSum(CTByCountry("Germany"));
+    var SwitzerlandCT = Timedim.group().reduceSum(CTByCountry("Switzerland"));
+
+    var compositeChart = dc.compositeChart('#del_country');
+
+   compositeChart
+       .width(400)
+        .height(300)
+        .dimension(Timedim)
+        .x(d3.scale.ordinal())
+        .xAxisLabel("Month")
+        .yAxisLabel("CT Performance")
+        .margins({top: 40, right: 50, bottom: 50, left: 140})
+        .legend(dc.legend().x(35).y(20).itemHeight(13).gap(10))
+        .renderHorizontalGridLines(true)
+		.renderVerticalGridLines(true)
+    .compose([
             //each line chart is added to the composite and given it's own individual colour to set them apart
+           dc.lineChart(compositeChart)
+               .colors('green')
+                .group(FranceCT, 'France'),
+                dc.lineChart(compositeChart)
+                .colors('green')
+                .group(ItalyCT, 'Italy'),
            // dc.lineChart(compositeChart)
-            //    .colors('green')
-             //   .group(FranceCT, 'France'),
-            //dc.lineChart(compositeChart)
              //   .colors('green')
-              //  .group(ItalyCT, 'Italy'),
-            //dc.lineChart(compositeChart)
-             //   .colors('green')
-              //  .group(GermanyCT, 'Germany'),
-            //dc.lineChart(compositeChart)
-             //   .colors('green')
-             //   .group(SpainCT, 'Spain'),
-            //dc.lineChart(compositeChart)
-             //   .colors('green')
-              //  .group(SwitzerlandCT, 'Switzerland'),
-   //])
-     //   .brushOn(false);
-//}
+               // .group(GermanyCT, 'Germany'),
+            dc.lineChart(compositeChart)
+                .colors('green')
+                .group(SpainCT, 'Spain'),
+            dc.lineChart(compositeChart)
+                .colors('green')
+                .group(SwitzerlandCT, 'Switzerland'),
+   ])
+        .brushOn(false);
+    }
