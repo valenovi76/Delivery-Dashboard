@@ -1,6 +1,6 @@
 //load data
 queue()
-.defer(d3.csv, "/assets/data/orders.csv")
+.defer(d3.json, "/assets/data/orders.json")
 .await(makeGraphs);
 
 
@@ -9,15 +9,19 @@ function makeGraphs(error, orderData) {
 
     var ndx = crossfilter(orderData);
 
+    var parseDate = d3.time.format("%d/%m/%Y").parse;
+    orderData.forEach(function(d){
+    d.Completed_Month = parseDate(d.Completed_Month);
+    });
+    console.log(orderData);
+
 
 orderData.forEach(function(d){
 d.CT_Ex_Delayed_Days=parseInt(d.CT_Ex_Delayed_Days)})
 
-var parseDate = d3.time.format("%d/%m/%Y").parse;
-    orderData.forEach(function(d){
-        d.Completed_Month = parseDate(d.Completed_Month);
 
-    });
+
+
 
 
 //var parseDate2 = d3.time.format("%B").parse;
@@ -181,7 +185,7 @@ var group =dim.group();
 dc.lineChart("#created")
 
 .width(400)
-.height(300)
+.height(350)
 .margins({top: 30, right: 40, bottom: 50, left: 50})
 .dimension(dim)
 .group(group)
@@ -191,16 +195,18 @@ dc.lineChart("#created")
 .elasticY(true)
 .xAxisLabel("FY 2019-2020 Month")
 .yAxis().ticks(20);
+
  }
 //completed line js
 function show_completed(ndx) {
+
 var dim = ndx.dimension(dc.pluck('Completed_Month'));
 var group = dim.group();
 
 dc.lineChart("#completed")
 
 .width(400)
-.height(300)
+.height(350)
 .margins({top: 30, right: 40, bottom: 50, left: 50})
 .dimension(dim)
 .group(group)
@@ -220,7 +226,7 @@ function show_order_order_type(ndx) {
     dc.pieChart("#order_type")
 
         .width(400)
-        .height(300)
+        .height(350)
         .slicesCap(4)
         .radius(100)
         .innerRadius(60)
@@ -258,7 +264,7 @@ var group= dim.group().reduce(add_item,remove_item,initialise);
 
 dc.lineChart("#ct_avg")
 .width(400)
-.height(300)
+.height(350)
 .margins({top: 10, right: 50, bottom: 30, left: 50})
 .dimension(dim)
 .group(group)
@@ -302,7 +308,7 @@ function show_SLT_perf(ndx){
 
     dc.barChart("#ct_perf")
         .width(400)
-        .height(300)
+        .height(350)
         .dimension(dim)
         .group(PassByMonth, "Pass")
         .stack(FailByMonth, "Fail")
@@ -349,7 +355,7 @@ function show_ontime_late(ndx) {
 
     dc.barChart("#ontime_perf")
         .width(400)
-        .height(300)
+        .height(350)
         .dimension(dim)
         .group(OnTimeByMonth, "On-Time")
         .stack(LateByMonth, "Late")
@@ -374,7 +380,7 @@ var dim = ndx.dimension(dc.pluck('Product'));
     dc.pieChart("#del_product")
 
         .width(400)
-        .height(300)
+        .height(350)
         .slicesCap(4)
         .radius(100)
         .innerRadius(60)
@@ -413,7 +419,7 @@ function show_delivery_Project(ndx) {
 
     dc.barChart("#del_project")
         .width(400)
-        .height(300)
+        .height(350)
         .dimension(dim)
         .group(OnTimeByMonth, "On-Time")
         .stack(LateByMonth, "Late")
@@ -431,63 +437,15 @@ function show_delivery_Project(ndx) {
    }
 //Delivery Country RFT composite
    function show_delivery_country_composite(ndx){
+   var dateDim = ndx.dimension(function(d) {return d.Completed_Month;});
+   var CT = dateDim.group().reduceSum(dc.pluck('CT_Ex_Delayed_Days'));
+    var minDate = dateDim.bottom(1)[0].date;
+    var maxDate = dateDim.top(1)[0].date;
+    var CTlineChart  = dc.lineChart("#del_country");
 
-        var Timedim = ndx.dimension (dc.pluck("Completed_Month"))
-        var minDate = Timedim.bottom(1)[0].date;
- 	    var maxDate = Timedim.top(1)[0].date;
-
-
-
-       function CTByCountry (Country){
-        return function(d){
-            if (d.Country === Country)
-
-            {;
-                return d.CT_Ex_Delayed_Days;
-
-            }else {
-                return 0;
-            }
-        };
-
-    }
-
-    var FranceCT = Timedim.group().reduceSum(CTByCountry("France"));
-    var ItalyCT = Timedim.group().reduceSum(CTByCountry("Italy"));
-    var SpainCT = Timedim.group().reduceSum(CTByCountry("Spain"));
-    //var GermanyCT = Timedim.group().reduceSum(CTByCountry("Germany"));
-    var SwitzerlandCT = Timedim.group().reduceSum(CTByCountry("Switzerland"));
-
-    var compositeChart = dc.compositeChart('#del_country');
-
-   compositeChart
-       .width(400)
-        .height(300)
-        .dimension(Timedim)
-        .x(d3.scale.ordinal())
-        .xAxisLabel("Month")
-        .yAxisLabel("CT Performance")
-        .margins({top: 40, right: 50, bottom: 50, left: 140})
-        .legend(dc.legend().x(35).y(20).itemHeight(13).gap(10))
-        .renderHorizontalGridLines(true)
-		.renderVerticalGridLines(true)
-    .compose([
-            //each line chart is added to the composite and given it's own individual colour to set them apart
-           dc.lineChart(compositeChart)
-               .colors('green')
-                .group(FranceCT, 'France'),
-                dc.lineChart(compositeChart)
-                .colors('green')
-                .group(ItalyCT, 'Italy'),
-           // dc.lineChart(compositeChart)
-             //   .colors('green')
-               // .group(GermanyCT, 'Germany'),
-            dc.lineChart(compositeChart)
-                .colors('green')
-                .group(SpainCT, 'Spain'),
-            dc.lineChart(compositeChart)
-                .colors('green')
-                .group(SwitzerlandCT, 'Switzerland'),
-   ])
-        .brushOn(false);
+    CTlineChart
+	.width(400).height(350)
+	.dimension(dateDim)
+	.group(CT)
+	.x(d3.time.scale().domain([minDate,maxDate]));
     }
