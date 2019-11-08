@@ -434,7 +434,6 @@ function show_delivery_Project(ndx) {
 
         var Timedim = ndx.dimension (dc.pluck("Completed_Month"))
         var minDate = Timedim.bottom(1)[0].date;
-        console.log(Timedim);
  	    var maxDate = Timedim.top(1)[0].date;
 
 

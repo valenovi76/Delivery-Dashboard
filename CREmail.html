@@ -24,14 +24,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!--Change Request Form JS-->
-    <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js">
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
     <script type="text/javascript">
-            (function(){
-                emailjs.init("user_Tts8rBfG4XdJFSi9UKGIp");
-
-            })();
+    (function(){
+      emailjs.init("user_I8bhEMbW07Pu3q0hVv5VY");
+      // emailjs.send("DeliveryDashboard", "dashboard", {name:"vale",note: "check this out"});
+    })();
     </script>
 
     <title>Daily Delivery Dashboard</title>
@@ -61,7 +59,9 @@
                         <h3>Change Requests Contact Form</h3>
                     </div>
                 </div>
-                <form id="contactform" onsubmit="return sendMail(this); method:"POST">
+
+                <form onsubmit= "return sendMail(this);" method="POST">
+
 
     <div class="messages"></div>
 
@@ -70,15 +70,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="form_name">Firstname *</label>
-                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_lastname">Lastname *</label>
-                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                    <label for="name">Full Name *</label>
+                    <input id="fullname" type="text" name="name" class="form-control" placeholder="Please enter your full name *" required="required" data-error="Firstname is required.">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -87,10 +80,12 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="form_email">Email *</label>
-                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                    <input id="emailaddress" type="email" name="emailaddress" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="form_need">Please specify your need *</label>
@@ -105,11 +100,13 @@
                 </div>
             </div>
         </div>
+
+
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="form_message">Message *</label>
-                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                    <textarea id="message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -130,25 +127,22 @@
         </div>
 
     </div>
-        <!-- Menu toggle script -->
+
+<!-- Footer -->
+<footer class="page-footer font-small blue fixed-bottom">
+  <div class="footer-copyright text-center py-3">Dashboard Admin : Valentina Novara
+  </div>
+</footer>
+<!-- Footer -->
+ <!-- Menu toggle script -->
         <script>
             $("#menu-toggle").click(function(e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("menuDisplayed");
             });
         </script>
-    <!-- Footer -->
-<footer class="page-footer font-small blue fixed-bottom">
-
-
-  <div class="footer-copyright text-center py-3">Dashboard Admin : Valentina Novara
-
-  </div>
-
-
-</footer>
-<!-- Footer -->
-<script src="assets/js/sendemail.js"></script>
+<!-- Send CR script -->
+<script src="assets/static/js/sendemail.js"></script>
     </div>
 
 
