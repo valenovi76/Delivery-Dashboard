@@ -13,7 +13,7 @@ function makeGraphs(error, orderData) {
     orderData.forEach(function(d){
     d.Completed_Month = parseDate(d.Completed_Month);
     });
-    console.log(orderData);
+
 
 
 orderData.forEach(function(d){
