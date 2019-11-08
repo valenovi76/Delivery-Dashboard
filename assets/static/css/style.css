@@ -1,6 +1,6 @@
 /*Body*/
 body{
-    background-color:#1a2035;
+    background-color:#0f0f0f;
     color:#3c4858;
 
 }
@@ -110,7 +110,7 @@ h3{
     margin: 0 auto;
 }
 .section-title{
-    background-color:#375a7f;
+    background-color:#1f1c1c;
     color:whitesmoke;
     margin-top:10px;
     margin-bottom: 10px;
@@ -119,23 +119,23 @@ h3{
 
 }
 .selectors{
-    background-color:#375a7f;
+    background-color:#1f1c1c;
     color:whitesmoke;
     margin-top:10px;
     border-radius: 5px 5px 5px 5px;
 }
 
 .dc-select-menu {
-    width:100% !important;
+    width:200px!important;
 }
 
-#created{
-    background-color:#fb8c00;
+.graph{
+    background-color:#1f1c1c;
     text-align: center;
 
 }
 
-#completed{
+/*#completed{
     background-color:#48a357;
     text-align: center;
 }
@@ -165,7 +165,7 @@ text-align:center;
     text-align:center;}
 
 #del_project{background-color: #d93733;
-    text-align:center;}
+    text-align:center;}*/
 
 .axis {
   /*font-size: /* Insert font size */

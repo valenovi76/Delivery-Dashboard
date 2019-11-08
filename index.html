@@ -35,8 +35,8 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li><a href="CREmail.html">Change Requests Log</a></li>
-                <li><a href="#">Data Download<i class="fa fa-download " aria-hidden="true"></i></a></li>
+                <li><a href="CREmail.html" >Change Requests Log</a></li>
+                <li><a href="assets/data/orders.csv" download>Data Download<i class="fa fa-download " aria-hidden="true"></i></a></li>
             </ul>
         </div>
 
@@ -116,14 +116,17 @@
             </div>
         <!-- row selectors-->
             <div class="row selectors" title = "These filters can be applied to all the graphs in the dashboard">
-            <div class="col-md">
+            <div class="col">
             <div id="wip_group_selector">Select Channel<br></br></div>
             </div>
-            <div class="col-md">
+            <div class="col">
             <div id="product_selector">Select Product<br></br></div>
             </div>
-            <div class="col-md">
+            <div class="col">
             <div id="project_selector">Select Project<br></br></div>
+            </div>
+            <div class="col">
+            <div id="reset_selector"><a class="btn btn-info btn-sm float-center" href="javascript:dc.filterAll();dc.redrawAll();" role="button">Reset Filters</a><br></br></div>
             </div>
             </div>
         <!--Row section title-->
@@ -180,6 +183,17 @@
                         <div id="del_project" class="graph" title ="Volume of Orders Delivered by Project"><span>Delivery by Project</span></div>
                      </div>
             </div>
+            <div class="row footer">
+            <!-- Footer -->
+                <footer class="page-footer font-small blue fixed-bottom">
+                    <div class="footer-copyright text-center py-3">Dashboard Admin : Valentina Novara
+                    <div row >
+                        <a href="CREmail.html" class="btn btn-danger btn-rounded">Change Requests</a>
+                    </div>
+                    </div>
+                </footer>
+<!-- Footer -->
+            </div>
         </div>
     </div>
         <!-- Menu toggle script -->
@@ -189,19 +203,7 @@
                 $("#wrapper").toggleClass("menuDisplayed");
             });
         </script>
-<!-- Footer -->
-<footer class="page-footer font-small blue fixed-bottom">
 
-
-  <div class="footer-copyright text-center py-3">Dashboard Admin : Valentina Novara
-  <div row >
-    <a href="CREmail.html" class="btn btn-danger btn-rounded">Change Requests</a>
-  </div>
-  </div>
-  
-
-</footer>
-<!-- Footer -->
     </div>
 
 
