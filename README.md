@@ -1,6 +1,6 @@
 # Delivery Dashboard
 
-![site](assets/static/images/responsive_site.JPG)
+
 
 The dashboard will be used in the Delivery department to keep track of the KPIs performance throughout the financial year. The dashbord will give a graphic rapresentation of the data analysis allowing interaction between graphs (crossfilter and selectors available) as well as on hover information. The toggle Side bar one right gives the user the possibility to submit further change requests and he option to download the data source, for those willing to further explore our performance using differnt tools. The presentation is neat and minimalist to ensure it can be used in Power Point presentation across the business.
 
