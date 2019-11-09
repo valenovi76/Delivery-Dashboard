@@ -198,4 +198,6 @@ justify-content: center;
 
 #form-wrapper{
     display: block;
+    width:400px;
+    margin:auto;
 }
