@@ -1,6 +1,6 @@
 # Delivery Dashboard
 
-![enter image description here](https://fc4ff615-5ac8-43fa-9f1a-0b13749c4a5c.ws-eu01.gitpod.io/#/workspace/Delivery_Dashboard/assets/static/images/responsive_site.JPG)
+![site](assets/static/images/responsive_site.JPG)
 
 The dashboard will be used in the Delivery department to keep track of the KPIs performance throughout the financial year. The dashbord will give a graphic rapresentation of the data analysis allowing interaction between graphs (crossfilter and selectors available) as well as on hover information. The toggle Side bar one right gives the user the possibility to submit further change requests and he option to download the data source, for those willing to further explore our performance using differnt tools. The presentation is neat and minimalist to ensure it can be used in Power Point presentation across the business.
 
@@ -76,7 +76,7 @@ Thorough testing was conducted on the data loading via console.log, crosserferen
 Further testing was conducted to ensure that the crossfilter was properly working across the graphs
 A copy of the excel file built to test against the console logs and the crossfilter can be found [here](/assets/data/Data_testing.xlsx)
 Below a picture of the test on the data load
-![Testing Data](https://fc4ff615-5ac8-43fa-9f1a-0b13749c4a5c.ws-eu01.gitpod.io/#/workspace/Delivery_Dashboard/assets/static/images/Data_testing.JPG)
+![Testing Data](assets/static/images/Data_testing.JPG)
 
 The Change Request form has been tested as per below proess
 
