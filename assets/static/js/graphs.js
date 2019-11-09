@@ -181,7 +181,9 @@ function show_monthly_delivery(ndx){
 //created line js
 function show_created(ndx) {
 var dim = ndx.dimension(dc.pluck('Created_Month'));
+console.log(dim);
 var group =dim.group();
+
 dc.lineChart("#created")
 
 .width(400)
