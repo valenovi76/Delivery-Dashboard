@@ -1,5 +1,7 @@
 # Delivery Dashboard
 
+![enter image description here](https://fc4ff615-5ac8-43fa-9f1a-0b13749c4a5c.ws-eu01.gitpod.io/#/workspace/Delivery_Dashboard/assets/static/images/responsive_site.JPG)
+
 The dashboard will be used in the Delivery department to keep track of the KPIs performance throughout the financial year. The dashbord will give a graphic rapresentation of the data analysis allowing interaction between graphs (crossfilter and selectors available) as well as on hover information. The toggle Side bar one right gives the user the possibility to submit further change requests and he option to download the data source, for those willing to further explore our performance using differnt tools. The presentation is neat and minimalist to ensure it can be used in Power Point presentation across the business.
 
 
@@ -72,8 +74,9 @@ for example selecting one segment of the Order Type Pie graph will filter accord
 
 Thorough testing was conducted on the data loading via console.log, crosserference against an excel pivot on the same data.
 Further testing was conducted to ensure that the crossfilter was properly working across the graphs
-A copy of the excel file built to test against the console logs and the crossfilter can be found here
+A copy of the excel file built to test against the console logs and the crossfilter can be found [here](/assets/data/Data_testing.xlsx)
 Below a picture of the test on the data load
+![Testing Data](https://fc4ff615-5ac8-43fa-9f1a-0b13749c4a5c.ws-eu01.gitpod.io/#/workspace/Delivery_Dashboard/assets/static/images/Data_testing.JPG)
 
 The Change Request form has been tested as per below proess
 
@@ -95,15 +98,9 @@ Currently there seems to be no solution for the issue and I might have to abando
 
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-
--   Different values for environment variables (Heroku Config Vars)?
--   Different configuration files?
--   Separate git branch?
-
-In addition, if it is not obvious, you should also describe how to run your code locally.
+This site is hosted using GitHub pages, deployed directly from the master branch.
+The deployed site will update automatically upon new commits to the master branch.
+In order for the site to deploy correctly on GitHub pages, the landing page is named index.html, and the current live site can be accessed [here](https://valenovi76.github.io/Delivery_Dashboard/).
 
 ## Credits
 
