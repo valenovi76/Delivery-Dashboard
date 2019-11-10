@@ -13,7 +13,18 @@ body{
     margin-top: 20px;
 }
 
-h3{
+.RFT-Created{
+    background-color: #fc5603 !important;
+}
+.CT-Perf{
+background-color:#34DDDD !important;
+}
+
+.Month-del{
+background-color: #FF00FF !important;
+}
+
+h4{
     color: #3c4858;
     text-align: center;
 }
@@ -123,7 +134,23 @@ h3{
     color:whitesmoke;
     margin-top:10px;
     border-radius: 5px 5px 5px 5px;
+    padding:20px}
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  border-bottom: 2px solid white;
+  margin: 0 15 0 15;
+  max-width: 100%;
 }
+
+.sticky + #page-content-wrapper {
+  padding-top: 102px;
+}
+
 
 .dc-select-menu {
     width:200px!important;

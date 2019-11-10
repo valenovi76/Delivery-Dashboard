@@ -18,9 +18,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
     <script type="text/javascript" src="assets/static/js/graphs.js"></script>
-
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 
@@ -47,29 +44,29 @@
         <!-- KPI Cards -->
                 <div class="row bg-secondary rounded KPIS-header">
                     <div class="col-md-12 page-header ">
-                        <a href="#" class="btn btn-light" id="menu-toggle">Menu</a>
-                        <h3>Delivery KPIs Dashboard</h3>
+                        <a href="#" class="btn btn-outline-light btn-sm float-center" id="menu-toggle">Menu</a>
+                        <h4>Delivery KPIs Dashboard</h3>
                         <div class="row kpis">
                             <div class="card-group mx-auto">
-                                <div class="card flex-fill bg-primary text-white mx-3 rounded" title ="The Right First Time performance (RFT) indicates the number of orders delivered on or before the Customer Committed Date">
+                                 <div class="card flex-fill bg-danger text-white mx-3 rounded RFT-Created" title = "The Cycle Time Performance (CT), is calculated on the number of orders delivered within the Lead Time Target for the specific Product and Delivery Type">
                                     <div class="card-header">
-                                        <h5 class="card-title text-white mb-0 rounded">RFT TgT 95%</h5>
+                                        <h5 class="card-title text-white mb-0 rounded">RFT Tgt 95%</h5>
                                     </div>
                                     <div class="card-body py-3">
                                         <div class="row no-gutters">
-                                            <div class="col-3 align-self-center text-left ">
+                                            <div class="col align-self-center text-left">
                                                 <div class="icon icon-primary">
-                                                    <i class="far fa-thumbs-up fa-sm"></i>
+                                                <i class="far fa-thumbs-up fa-sm"></i>
                                                 </div>
-                                                <div class="col-9 align-self-center text-right ">
+                                            </div>
+                                            <div class="col align-self-center text-right">
                                                 <div id="RFTPerc">
-                                                </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card flex-fill bg-danger text-white mx-3 rounded" title = "The Cycle Time Performance (CT), is calculated on the number of orders delivered within the Lead Time Target for the specific Product and Delivery Type">
+                                <div class="card flex-fill bg-danger text-white mx-3 rounded CT-Perf" title = "The Cycle Time Performance (CT), is calculated on the number of orders delivered within the Lead Time Target for the specific Product and Delivery Type">
                                     <div class="card-header">
                                         <h5 class="card-title text-white mb-0 rounded">CT Tgt 94%</h5>
                                     </div>
@@ -87,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card flex-fill bg-warning text-white mx-3 rounded" title = "The Monthly Average Delivery volume is an internal metric calculating the average of orders delivered within a financial period">
+                                <div class="card flex-fill bg-warning text-white mx-3 rounded Month-del" title = "The Monthly Average Delivery volume is an internal metric calculating the average of orders delivered within a financial period">
                                     <div class="card-header">
                                         <h5 class="card-title text-white mb-0 rounded">Del Tgt 200</h5>
                                     </div>
@@ -104,9 +101,9 @@
                                                         </div>
                                                 </div>
                                             </div>
-                                        </div
+                                        </div>
 
-                        >
+
                         </div>
                     </div>
                 </div>
@@ -115,7 +112,7 @@
 
             </div>
         <!-- row selectors-->
-            <div class="row selectors" title = "These filters can be applied to all the graphs in the dashboard">
+            <div class="row selectors" id="selectors-section" title="These filters can be applied to all the graphs in the dashboard">
             <div class="col">
             <div id="wip_group_selector">Select Channel<br></br></div>
             </div>
@@ -126,7 +123,7 @@
             <div id="project_selector">Select Project<br></br></div>
             </div>
             <div class="col">
-            <div id="reset_selector"><a class="btn btn-info btn-sm float-center" href="javascript:dc.filterAll();dc.redrawAll();" role="button">Reset Filters</a><br></br></div>
+            <div id="reset_selector"><a class="btn btn-outline-light btn-sm float-center" href="javascript:dc.filterAll();dc.redrawAll();" role="button">Reset Filters</a><br></br></div>
             </div>
             </div>
         <!--Row section title-->
@@ -196,7 +193,7 @@
                 <footer class="page-footer font-small blue">
                     <div class="footer-copyright text-center py-3">Dashboard Admin : Valentina Novara
                     <div row >
-                        <a href="CREmail.html" class="btn btn-danger btn-rounded">Change Requests</a>
+                        <a href="CREmail.html" class="btn btn-outline-light btn-sm float-center btn-rounded">Change Requests</a>
                     </div>
                     </div>
                 </footer>
@@ -211,7 +208,8 @@
                 $("#wrapper").toggleClass("menuDisplayed");
             });
         </script>
-
+        <!--Sticky-->
+        <script type="text/javascript" src="assets/static/js/sticky.js"></script>
     </div>
 
 
