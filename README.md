@@ -16,11 +16,12 @@ After conducting a series of Voice of the Customers meetign the users needs have
 - Be able to interact with the data and reset the filters applied
 - Be able to have a source of data consisten across the business to use for presentation and meetings.
 
-I simple wireframe of the project was sketched here
+A simple sketch wireframe of the project can be found here.
 
 
 ## Features
 A live demo of the site can be found [here](https://valenovi76.github.io/Delivery_Dashboard/)
+
 DATA
 the data used for the project is a mock-up of the data we currently produce on a SQL database
 sensitive information has been scrambled.
@@ -38,8 +39,10 @@ A toggle side bar menu is accessible on the left handside and allows the users t
 
 The  3 cards on the header, rapresent our Key Perfomance Indicators, the corresponding target and a live feed from the data to show the current performance.
 
- - Selectors on the section below allow data filtering across the entire dashboard
- - A button to reset the graphs is available at the far end of this section as well as at the end of each section title.
+ - Selectors on the section below allow data filtering across the entire dashboard.
+    A sticky JS ensures the filters are fixed on the top of the screen,
+    so that they can changed or reset while checking the graphs further down on the page.
+ - A button to reset the graphs is available at the far end of this section.
  - The graphs are structured in 3 segments:
 				Work In Progress analisys
 				RFT and CT performance (KPIs)
