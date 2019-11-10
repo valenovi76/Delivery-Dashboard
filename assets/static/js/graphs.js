@@ -196,6 +196,7 @@ dc.lineChart("#created")
 .xUnits(dc.units.ordinal)
 .elasticY(true)
 .xAxisLabel("FY 2019-2020 Month")
+.colors(['#FF00FF'])
 .yAxis().ticks(20);
 
  }
@@ -217,6 +218,7 @@ dc.lineChart("#completed")
 .xUnits(dc.units.ordinal)
 .elasticY(true)
 .xAxisLabel("FY 2019-2020 Month")
+.colors("#34DDDD")
 .yAxis().ticks(20);
  }
 //WIP pie js
@@ -234,6 +236,7 @@ function show_order_order_type(ndx) {
         .innerRadius(60)
         .dimension(dim)
         .group(group)
+        .ordinalColors(["#750075","#D100D1","#FF2EFF","#FF8AFF"])
         .legend(dc.legend())
 
 }
@@ -276,6 +279,7 @@ return d.value.average})
 .x(d3.scale.ordinal())
 .xUnits(dc.units.ordinal)
 .elasticY(true)
+.colors("#FF00FF")
 .xAxisLabel("FY 2019-2020 Month")
 .yAxis().ticks(20);
 
@@ -324,6 +328,7 @@ function show_SLT_perf(ndx){
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
+        .ordinalColors(["#fc5603","#FF00FF"])
         .margins({top: 10, right: 100, bottom: 30, left: 30});
         //.ordinalColors(['#d93733','#108a24']);
 }
@@ -370,6 +375,7 @@ function show_ontime_late(ndx) {
         })
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
+        .ordinalColors(["#fc5603","#FF00FF"])
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});
    }
@@ -386,6 +392,7 @@ var dim = ndx.dimension(dc.pluck('Product'));
         .slicesCap(4)
         .radius(100)
         .innerRadius(60)
+        .ordinalColors(["#34DDDD","#FF0BAC","#6AF2F0","#54086B","#fc5603"])
         .dimension(dim)
         .group(group)
         .legend(dc.legend())
@@ -433,6 +440,7 @@ function show_delivery_Project(ndx) {
             }
         })
         .x(d3.scale.ordinal())
+        .ordinalColors(["#fc5603","#FF00FF"])
         .xUnits(dc.units.ordinal)
         .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
         .margins({top: 10, right: 100, bottom: 30, left: 30});

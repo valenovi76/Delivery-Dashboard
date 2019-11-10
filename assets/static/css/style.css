@@ -135,11 +135,9 @@ h3{
 
 }
 
-#completed.path{
-    stroke:#e14eca;
-    stroke-width: 1;
 
-}
+
+
 /*#order_type{
     background-color: #913f9e;
     text-align:center;
@@ -180,16 +178,21 @@ text {
   fill:whitesmoke;
 }
 
-path {
+/*path {
   stroke:white;
   stroke-width: 1;
-}
+}*/
+
+#completed.path{
+    stroke:#e14eca;
+    stroke-width: 1;}
 
 #reset_selector{
 display:block;
 margin-top: 20px;
 align-items: center;
 justify-content: center;
+color:#e14eca;
 }
 
 .bg-secondary {
