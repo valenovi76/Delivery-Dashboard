@@ -1,233 +1,200 @@
 /*Body*/
-body{
-    background-color:#1e1e2f;
-    color:#3c4858;
-
+body {
+	background-color: #1e1e2f;
+	color: #3c4858;
 }
+
 .dc-legend {
-  font-size: 8px !important }
+	font-size: 8px !important
+}
+
+
 /*Header*/
-
-.kpis{
-    margin-bottom: 20px;
-    margin-top: 20px;
+.kpis {
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
-.RFT-Created{
-    background-color: #fc5603 !important;
-}
-.CT-Perf{
-background-color:#34DDDD !important;
+.RFT-Created {
+	background-color: #fc5603 !important;
 }
 
-.Month-del{
-background-color: #FF00FF !important;
+.CT-Perf {
+	background-color: #34DDDD !important;
 }
 
-h4{
-    color: #3c4858;
-    text-align: center;
+.Month-del {
+	background-color: #FF00FF !important;
 }
 
-.page-header{
-    margin:20px;
+h4 {
+	color: #3c4858;
+	text-align: center;
 }
 
-.KPIS-header{
-    background-color: transparent!important;
-    border:thin rgb(58, 10, 58) !important ;
-    opacity: .90;
-
+.page-header {
+	margin: 20px;
 }
+
+.KPIS-header {
+	background-color: transparent!important;
+	border: thin rgb(58, 10, 58) !important;
+	opacity: .90;
+}
+
 /* Sidebar */
 #sidebar-wrapper {
-    z-index: 1;
-    position: absolute;
-    width: 0;
-    height: 100%;
-    overflow-y: hidden;
-    border: 0.5px solid rgb(71, 49, 71);
-    background: #27293d;
-    opacity: .80;
+	z-index: 1;
+	position: absolute;
+	width: 0;
+	height: 100%;
+	overflow-y: hidden;
+	border: 0.5px solid rgb(71, 49, 71);
+	background: #27293d;
+	opacity: .80;
 }
+
 
 /* Always take up entire screen */
 #page-content-wrapper {
-    width: 100%;
-    position: absolute;
-    padding: 15px;
+	width: 100%;
+	position: absolute;
+	padding: 15px;
 }
-
 
 
 /* Change with of sidebar from 0 to 250px */
 #wrapper.menuDisplayed #sidebar-wrapper {
-    width: 250px;
+	width: 250px;
 }
+
 
 /* Since we added left padding, we need to shrink the width by 250px */
 #wrapper.menuDisplayed #page-content-wrapper {
-    padding-left: 250px;
+	padding-left: 250px;
 }
 
 
 /* Sidebar styling - the entire ul list */
 .sidebar-nav {
-    padding: 0;
-    list-style: none;
+	padding: 0;
+	list-style: none;
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+	text-indent: 20px;
+	line-height: 40px;
 }
 
 .sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #ddd;
+	display: block;
+	text-decoration: none;
+	color: #ddd;
 }
 
 .sidebar-nav li a:hover {
-    background:#375a7f;
+	background: #375a7f;
 }
 
-/*Header*/
 
 /*Cards style*/
-.card{
-    display:block;
-
+.card {
+	display: block;
 }
-.card-header{
-    border-radius: 15px 15px 15px 15px;}
 
-.card-body{border-radius: 15px 15px 15px 15px;
+.card-header {
+	border-radius: 15px 15px 15px 15px;
+}
+
+.card-body {
+	border-radius: 15px 15px 15px 15px;
 }
 
 .icon {
-    width: 60px !important;
-    height: 60px !important;
-    line-height: 52px;
-    text-align: center;
-    font-size: 2rem;
-    margin: .5rem 0;
+	width: 60px !important;
+	height: 60px !important;
+	line-height: 52px;
+	text-align: center;
+	font-size: 2rem;
+	margin: .5rem 0;
 }
 
-
-.col-sm{
-    min-width: 400px;
-    height: 400px;
-    margin: 0 auto;
+.col-sm {
+	min-width: 400px;
+	height: 400px;
+	margin: 0 auto;
 }
-.section-title{
-    background-color:#27293d;
-    color:whitesmoke;
-    margin-top:10px;
-    margin-bottom: 10px;
-    text-align: center;
-    border-radius: 5px 5px 5px 5px;
 
+.section-title {
+	background-color: #27293d;
+	color: whitesmoke;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-radius: 5px 5px 5px 5px;
 }
-.selectors{
-    background-color:#27293d;
-    color:whitesmoke;
-    margin-top:10px;
-    border-radius: 5px 5px 5px 5px;
-    padding:20px}
 
+.selectors {
+	background-color: #27293d;
+	color: whitesmoke;
+	margin-top: 10px;
+	border-radius: 5px 5px 5px 5px;
+	padding: 20px
+}
 
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-  border-bottom: 2px solid white;
-  margin: 0 15 0 15;
-  max-width: 100%;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	border-bottom: 2px solid white;
+	margin: 0px 15px 0px 15px;
+	max-width: 100%;
 }
 
-.sticky + #page-content-wrapper {
-  padding-top: 102px;
+.sticky+#page-content-wrapper {
+	padding-top: 102px;
 }
-
 
 .dc-select-menu {
-    width:200px!important;
+	width: 200px!important;
 }
 
-.graph{
-    background-color:#27293d;
-    text-align: center;
-
+.graph {
+	background-color: #27293d;
+	text-align: center;
 }
-
-
-
-
-/*#order_type{
-    background-color: #913f9e;
-    text-align:center;
-}
-#ct_avg{
-    background-color:#d93733;
-    text-align:center;
-}
-
-#ct_perf{
-    background-color: rgb(29, 19, 49);
-text-align:center;
-}
-
-#ontime_perf{
-    background-color: #fb8c00;
-    text-align:center;
-}
-#del_product{
-    background-color: #913f9e;
-    text-align:center;
-}
-#del_country{background-color:#48a357;
-    text-align:center;}
-
-#del_project{background-color: #d93733;
-    text-align:center;}*/
 
 .axis {
-  /*font-size: /* Insert font size */
-  color: whitesmoke;
-  stroke:whitesmoke;
-  stroke-width: 0.1;
+	color: whitesmoke;
+	stroke: whitesmoke;
+	stroke-width: 0.1;
 }
 
 text {
-  font-size: 15px;
-  fill:whitesmoke;
+	font-size: 15px;
+	fill: whitesmoke;
 }
 
-/*path {
-  stroke:white;
-  stroke-width: 1;
-}*/
+#completed.path {
+	stroke: #e14eca;
+	stroke-width: 1;
+}
 
-#completed.path{
-    stroke:#e14eca;
-    stroke-width: 1;}
-
-#reset_selector{
-display:block;
-margin-top: 20px;
-align-items: center;
-justify-content: center;
-color:#e14eca;
+#reset_selector {
+	display: block;
+	margin-top: 20px;
+	align-items: center;
+	justify-content: center;
+	color: #e14eca;
 }
 
 .bg-secondary {
-    background-color: #27293d !important;
+	background-color: #27293d !important;
 }
 
-#form-wrapper{
-    display: block;
-    width:400px;
-    margin:auto;
+#form-wrapper {
+	display: block;
+	width: 400px;
+	margin: auto;
 }

@@ -1,153 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+      <link rel="stylesheet" href="assets/static/css/bootstrap.min.css" type="text/css" />
+      <link rel="stylesheet" href="assets/static/css/dc.min.css" type="text/css" />
+      <link rel="stylesheet" href="assets/static/css/style.css" type="text/css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+      <script type="text/javascript" src="assets/static/js/graphs.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
-    <link rel="stylesheet" href="assets/static/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="assets/static/css/dc.min.css" type="text/css" />
-    <link rel="stylesheet" href="assets/static/css/style.css" type="text/css" />
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
-    <script type="text/javascript" src="assets/static/js/graphs.js"></script>
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <!--Change Request Form JS-->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
-    <script type="text/javascript">
-    (function(){
-      emailjs.init("user_I8bhEMbW07Pu3q0hVv5VY");
-      // emailjs.send("DeliveryDashboard", "dashboard", {name:"vale",note: "check this out"});
-    })();
-    </script>
-
-    <title>Daily Delivery Dashboard</title>
-
-</head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+      <!--Change Request Form JS-->
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+      <script type="text/javascript">
+         (function(){
+           emailjs.init("user_I8bhEMbW07Pu3q0hVv5VY");
+         })();
+      </script>
+      <title>Daily Delivery Dashboard</title>
+   </head>
+   <body>
+      <div id="wrapper">
+         <!-- Sidebar -->
+         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li><a href="index.html">Delivery Dashboard (Home)</a></li>
-                <li><a href="#">Data Download<i class="fa fa-download " aria-hidden="true"></i></a></li>
+               <li><a href="index.html">Delivery Dashboard (Home)</a></li>
+               <li><a href="#">Data Download<i class="fa fa-download " aria-hidden="true"></i></a></li>
             </ul>
-        </div>
-
-        <!-- Page content -->
-        <div id="page-content-wrapper">
-
+         </div>
+         <!-- Page content -->
+         <div id="page-content-wrapper">
             <div class="container-fluid">
-        <!-- KPI Cards -->
-                    <div class="row bg-secondary rounded CR-header">
-                        <div class="col-md-12 page-header ">
-                            <a href="#" class="btn btn-outline-light btn-sm float-center" id="menu-toggle">Menu</a>
-                            <h4>Change Requests Contact Form</h3>
+               <!-- KPI Cards -->
+               <div class="row bg-secondary rounded CR-header">
+                  <div class="col-md-12 page-header ">
+                     <a href="#" class="btn btn-outline-light btn-sm float-center" id="menu-toggle">Menu</a>
+                     <h4>Change Requests Contact Form</h4>
+                  </div>
+               </div>
+               <div id="form-wrapper">
+                  <form onsubmit= "return sendMail(this);" method="POST">
+                     <div class="messages"></div>
+                     <div class="controls">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="fullname">Full Name *</label>
+                                 <input id="fullname" type="text" name="name" class="form-control" placeholder="Please enter your full name *" required="required" data-error="Firstname is required.">
+                                 <div class="help-block with-errors"></div>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-                    <div id="form-wrapper">
-                    <form onsubmit= "return sendMail(this);" method="POST">
-
-
-                            <div class="messages"></div>
-
-                            <div class="controls">
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="name">Full Name *</label>
-                                            <input id="fullname" type="text" name="name" class="form-control" placeholder="Please enter your full name *" required="required" data-error="Firstname is required.">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="form_email">Email *</label>
-                                            <input id="emailaddress" type="email" name="emailaddress" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="form_need">Please specify your need *</label>
-                                            <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                                                <option value=""></option>
-                                                <option value="Request quotation">Graph Addition</option>
-                                                <option value="Request order status">Data Analisys</option>
-                                                <option value="Request copy of an invoice">Ad Hoc Report</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="form_message">Message *</label>
-                                            <textarea id="message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input type="submit" class="btn btn-outline-light btn-send" value="Send message">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-muted">
-                                            <strong>*</strong> These fields are required.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                    </form>
-                    </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="emailaddress">Email *</label>
+                                 <input id="emailaddress" type="email" name="emailaddress" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                 <div class="help-block with-errors"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="form_need">Please specify your need *</label>
+                                 <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
+                                    <option value="">"N/A"</option>
+                                    <option value="Graph Addition">Graph Addition</option>
+                                    <option value="Data Analisys">Data Analisys</option>
+                                    <option value="Ad Hoc Report">Ad Hoc Report</option>
+                                    <option value="Other">Other</option>
+                                 </select>
+                                 <div class="help-block with-errors"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="message">Message *</label>
+                                 <textarea id="message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                                 <div class="help-block with-errors"></div>
+                              </div>
+                           </div>
+                           <div class="col-md-12">
+                              <input type="submit" class="btn btn-outline-light btn-send" value="Send message">
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <p class="text-muted">
+                                 <strong>*</strong> These fields are required.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
             </div>
             <!-- Footer -->
-<div class="row footer">
-
-            <div class="col">
-                <footer class="page-footer font-small blue">
-                    <div class="footer-copyright text-center py-3">Dashboard Admin : Valentina Novara
-                    </div>
-                </footer>
-
+            <div class="row footer">
+               <div class="col">
+                  <footer class="page-footer font-small blue">
+                     <div class="footer-copyright text-center py-3">Dashboard Admin : Valentina Novara
+                     </div>
+                  </footer>
+               </div>
+               <!-- Footer -->
+               <!-- Menu toggle script -->
+               <script>
+                  $("#menu-toggle").click(function(e) {
+                      e.preventDefault();
+                      $("#wrapper").toggleClass("menuDisplayed");
+                  });
+               </script>
+               <!-- Send CR script -->
+               <script src="assets/static/js/sendemail.js"></script>
             </div>
-<!-- Footer -->
- <!-- Menu toggle script -->
-        <script>
-            $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("menuDisplayed");
-            });
-        </script>
-<!-- Send CR script -->
-<script src="assets/static/js/sendemail.js"></script>
-    </div>
          </div>
-
-
-
-
-</body>
-
+      </div>
+   </body>
 </html>
