@@ -1,6 +1,6 @@
 //load data
 queue()
-    .defer(d3.csv, "/assets/data/orders.csv")
+    .defer(d3.csv, "/data/orders.csv")
 
     .await(makeGraphs);
 
@@ -15,14 +15,9 @@ function makeGraphs(error, orderData) {
     });
 
 
-
     orderData.forEach(function(d) {
         d.CT_Ex_Delayed_Days = parseInt(d.CT_Ex_Delayed_Days)
     })
-
-
-
-
 
 
     show_wip_group_selector(ndx);
@@ -44,7 +39,6 @@ function makeGraphs(error, orderData) {
 
     dc.renderAll();
 }
-
 
 //Selector js
 function show_wip_group_selector(ndx) {
@@ -183,10 +177,8 @@ function show_monthly_delivery(ndx) {
 }
 //created line js
 function show_created(ndx) {
-    var dateDim = ndx.dimension(function(d) {return d.Created_Month;});
-    var minDate = dateDim.bottom(1)[0].Created_Month;
-    var maxDate = dateDim.top(1)[0].Created_Month;
-    var dim = ndx.dimension(dc.pluck('Created_Month'));
+var dim = ndx.dimension(dc.pluck('Created_Month'));
+
     var group = dim.group();
 
     dc.lineChart("#created")
@@ -202,7 +194,8 @@ function show_created(ndx) {
         .dimension(dim)
         .group(group)
         .transitionDuration(500)
-        .x(d3.time.scale().domain([minDate, maxDate]))
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
         .elasticY(true)
         .xAxisLabel("FY 2019-2020 Month")
         .colors(['#FF00FF'])
