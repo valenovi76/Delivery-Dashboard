@@ -1,6 +1,6 @@
 //load data
 queue()
-    .defer(d3.csv, "/data/orders.csv")
+    .defer(d3.csv, "data/orders.csv")
 
     .await(makeGraphs);
 
