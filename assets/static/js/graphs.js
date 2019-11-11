@@ -9,7 +9,6 @@ queue()
 function makeGraphs(error, orderData) {
 
     var ndx = crossfilter(orderData);
-
     var parseDate = d3.time.format("%d/%m/%Y").parse;
     orderData.forEach(function(d) {
         d.Completed_Month = parseDate(d.Completed_Month);
@@ -22,12 +21,6 @@ function makeGraphs(error, orderData) {
     })
 
 
-
-
-    //var parseDate2 = d3.time.format("%B").parse;
-    //  orderData.forEach(function(d){
-    //    d.Created_Month = parseDate2(d.Created_Month);
-    //});
 
 
 
@@ -190,8 +183,10 @@ function show_monthly_delivery(ndx) {
 }
 //created line js
 function show_created(ndx) {
+    var dateDim = ndx.dimension(function(d) {return d.Created_Month;});
+    var minDate = dateDim.bottom(1)[0].Created_Month;
+    var maxDate = dateDim.top(1)[0].Created_Month;
     var dim = ndx.dimension(dc.pluck('Created_Month'));
-    console.log(dim);
     var group = dim.group();
 
     dc.lineChart("#created")
@@ -207,8 +202,7 @@ function show_created(ndx) {
         .dimension(dim)
         .group(group)
         .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
+        .x(d3.time.scale().domain([minDate, maxDate]))
         .elasticY(true)
         .xAxisLabel("FY 2019-2020 Month")
         .colors(['#FF00FF'])
@@ -503,19 +497,76 @@ function show_delivery_Project(ndx) {
             left: 30
         });
 }
-//Delivery Country RFT composite
-function show_delivery_country_composite(ndx) {
-    var dateDim = ndx.dimension(function(d) {
-        return d.Completed_Month;
-    });
-    var CT = dateDim.group().reduceSum(dc.pluck('CT_Ex_Delayed_Days'));
-    var minDate = dateDim.bottom(1)[0].date;
-    var maxDate = dateDim.top(1)[0].date;
-    var CTlineChart = dc.lineChart("#del_country");
 
-    CTlineChart
-        .width(400).height(350)
-        .dimension(dateDim)
-        .group(CT)
-        .x(d3.time.scale().domain([minDate, maxDate]));
-}
+//Delivery Country RFT composite
+   function show_delivery_country_composite(ndx){
+   var dateDim = ndx.dimension(function(d) {return d.Completed_Month;});
+    var minDate = dateDim.bottom(1)[0].Completed_Month;
+    var maxDate = dateDim.top(1)[0].Completed_Month;
+
+
+    var france = dateDim.group().reduceSum(function(d) {
+    if (d.Country === "France"){
+        return +1;
+
+    }
+    else{
+
+        return +0;
+    }
+    });
+
+    var germany = dateDim.group().reduceSum(function(d) {
+    if (d.Country === "Germany"){
+    return +1;
+    }
+    else{
+        return +0
+    }
+    });
+
+    var italy = dateDim.group().reduceSum(function(d) {
+    if (d.Country === "Italy") return +1;
+    else return +0;
+    });
+
+     var spain = dateDim.group().reduceSum(function(d) {
+    if (d.Country === "Spain") return +1;
+    else return +0;
+    });
+
+     var switzerland = dateDim.group().reduceSum(function(d) {
+    if (d.Country === "Switzerland") return +1;
+    else return +0;
+    });
+
+    var compositeChart = dc.compositeChart('#del_country');
+        compositeChart
+            .width(400)
+            .height(350)
+            .dimension(dateDim)
+            .x(d3.time.scale().domain([minDate, maxDate]))
+            .yAxisLabel("The Y Axis")
+            .legend(dc.legend().x(320).y(20).itemHeight(15).gap(5))
+            .renderHorizontalGridLines(true)
+            .compose([
+                dc.lineChart(compositeChart)
+                    .colors('#34DDDD')
+                    .group(france, 'France'),
+                dc.lineChart(compositeChart)
+                    .colors('#FF0BAC')
+                    .group(germany, 'Germany'),
+                dc.lineChart(compositeChart)
+                    .colors('#6AF2F0')
+                    .group(italy, 'Italy'),
+                dc.lineChart(compositeChart)
+                    .colors('#54086B')
+                    .group(spain, 'Spain'),
+                dc.lineChart(compositeChart)
+                    .colors('#fc5603')
+                    .group(switzerland, 'Switzerland')
+
+            ])
+            .brushOn(false)
+            .render();
+   }
