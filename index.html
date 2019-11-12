@@ -1,191 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
-      <link rel="stylesheet" href="assets/static/css/bootstrap.min.css" type="text/css" />
-      <link rel="stylesheet" href="assets/static/css/dc.min.css" type="text/css" />
-      <link rel="stylesheet" href="assets/static/css/style.css" type="text/css" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
-      <script type="text/javascript" src="assets/static/js/graphs.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <title>Daily Delivery Dashboard</title>
-   </head>
-   <body>
-      <div id="wrapper">
-         <!-- Sidebar -->
-         <div id="sidebar-wrapper">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/static/css/dc.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/static/css/style.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+    <script type="text/javascript" src="assets/static/js/graphs.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <title>Daily Delivery Dashboard</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-               <li><a href="CREmail.html" >Change Requests Log</a></li>
-               <li><a href="data/orders.csv" download>Data Download<i class="fa fa-download " aria-hidden="true"></i></a></li>
+                <li><a href="CREmail.html">Change Requests Log</a></li>
+                <li><a href="data/orders.csv" download>Data Download<i class="fa fa-download " aria-hidden="true"></i></a></li>
             </ul>
-         </div>
-         <!-- Page content -->
-         <div id="page-content-wrapper">
+        </div>
+        <!-- Page content -->
+        <div id="page-content-wrapper">
             <div class="container-fluid">
-               <!-- KPI Cards -->
-               <div class="row bg-secondary rounded KPIS-header">
-                  <div class="col-md-12 page-header ">
-                     <a href="#" class="btn btn-outline-light btn-sm float-center" id="menu-toggle">Menu</a>
-                     <h4>
+                <!-- KPI Cards -->
+                <div class="row bg-secondary rounded KPIS-header">
+                    <div class="col-md-12 page-header ">
+                        <a href="#" class="btn btn-outline-light btn-sm float-center" id="menu-toggle">Menu</a>
+                        <h4>
                      Delivery KPIs Dashboard</h4>
-                     <div class="row kpis">
-                        <div class="card-group mx-auto">
-                           <div class="card flex-fill bg-danger text-white mx-3 rounded RFT-Created" title = "The Cycle Time Performance (CT), is calculated on the number of orders delivered within the Lead Time Target for the specific Product and Delivery Type">
-                              <div class="card-header">
-                                 <h5 class="card-title text-white mb-0 rounded">RFT Tgt 95%</h5>
-                              </div>
-                              <div class="card-body py-3">
-                                 <div class="row no-gutters">
-                                    <div class="col align-self-center text-left">
-                                       <div class="icon icon-primary">
-                                          <i class="far fa-thumbs-up fa-sm"></i>
-                                       </div>
+                        <div class="row kpis">
+                            <div class="card-group mx-auto">
+                                <div class="card flex-fill bg-danger text-white mx-3 rounded RFT-Created" title="The Cycle Time Performance (CT), is calculated on the number of orders delivered within the Lead Time Target for the specific Product and Delivery Type">
+                                    <div class="card-header">
+                                        <h5 class="card-title text-white mb-0 rounded">RFT Tgt 95%</h5>
                                     </div>
-                                    <div class="col align-self-center text-right">
-                                       <div id="RFTPerc">
-                                       </div>
+                                    <div class="card-body py-3">
+                                        <div class="row no-gutters">
+                                            <div class="col align-self-center text-left">
+                                                <div class="icon icon-primary">
+                                                    <i class="far fa-thumbs-up fa-sm"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col align-self-center text-right">
+                                                <div id="RFTPerc">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="card flex-fill bg-danger text-white mx-3 rounded CT-Perf" title = "The Cycle Time Performance (CT), is calculated on the number of orders delivered within the Lead Time Target for the specific Product and Delivery Type">
-                              <div class="card-header">
-                                 <h5 class="card-title text-white mb-0 rounded">CT Tgt 94%</h5>
-                              </div>
-                              <div class="card-body py-3">
-                                 <div class="row no-gutters">
-                                    <div class="col align-self-center text-left">
-                                       <div class="icon icon-primary">
-                                          <i class="far fa-clock fa-lg"></i>
-                                       </div>
+                                </div>
+                                <div class="card flex-fill bg-danger text-white mx-3 rounded CT-Perf" title="The Cycle Time Performance (CT), is calculated on the number of orders delivered within the Lead Time Target for the specific Product and Delivery Type">
+                                    <div class="card-header">
+                                        <h5 class="card-title text-white mb-0 rounded">CT Tgt 94%</h5>
                                     </div>
-                                    <div class="col align-self-center text-right">
-                                       <div id="CTPerc">
-                                       </div>
+                                    <div class="card-body py-3">
+                                        <div class="row no-gutters">
+                                            <div class="col align-self-center text-left">
+                                                <div class="icon icon-primary">
+                                                    <i class="far fa-clock fa-lg"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col align-self-center text-right">
+                                                <div id="CTPerc">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="card flex-fill bg-warning text-white mx-3 rounded Month-del" title = "The Monthly Average Delivery volume is an internal metric calculating the average of orders delivered within a financial period">
-                              <div class="card-header">
-                                 <h5 class="card-title text-white mb-0 rounded">Del Tgt 200</h5>
-                              </div>
-                              <div class="card-body py-3">
-                                 <div class="row no-gutters">
-                                    <div class="col align-self-center text-left">
-                                       <div class="icon icon-primary">
-                                          <i class="fas fa-truck fa-lg"></i>
-                                       </div>
+                                </div>
+                                <div class="card flex-fill bg-warning text-white mx-3 rounded Month-del" title="The Monthly Average Delivery volume is an internal metric calculating the average of orders delivered within a financial period">
+                                    <div class="card-header">
+                                        <h5 class="card-title text-white mb-0 rounded">Del Tgt 200</h5>
                                     </div>
-                                    <div class="col align-self-center text-right">
-                                       <div id="avg_monthly_delivery"></div>
+                                    <div class="card-body py-3">
+                                        <div class="row no-gutters">
+                                            <div class="col align-self-center text-left">
+                                                <div class="icon icon-primary">
+                                                    <i class="fas fa-truck fa-lg"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col align-self-center text-right">
+                                                <div id="avg_monthly_delivery"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- row selectors-->
-               <div class="row selectors" id="selectors-section" title="These filters can be applied to all the graphs in the dashboard">
-                  <div class="col">
-                     <div id="wip_group_selector">Select Channel<br></div>
-                  </div>
-                  <div class="col">
-                     <div id="product_selector">Select Product<br></div>
-                  </div>
-                  <div class="col">
-                     <div id="project_selector">Select Project<br></div>
-                  </div>
-                  <div class="col">
-                     <div id="reset_selector"><a class="btn btn-outline-light btn-sm float-center" href="javascript:dc.filterAll();dc.redrawAll();" role="button">Reset Filters</a><br></div>
-                  </div>
-               </div>
-               <!--Row section title-->
-               <div class ="row section-title">
-                  <div class="col">
-                     WIP INFOGRAPH
-                  </div>
-               </div>
-               <!-- row WIP graphs-->
-               <div class="row WIP">
-                  <div class=col-sm>
-                     <div id="created" class="graph" title ="Created Orders per Financial Period (April to March)"><span>Created Orders</span></div>
-                  </div>
-                  <div class=col-sm>
-                     <div id="completed" class="graph" title ="Completed Orders per Financial Period (April to March)"><span>Completed Orders</span></div>
-                  </div>
-                  <div class=col-sm>
-                     <div id="order_type" class="graph" title="Volume of Orders by Order Type"><span>Order Type</span></div>
-                  </div>
-               </div>
-               <!--Row section title-->
-               <div class ="row section-title">
-                  <div class="col">
-                     RFT INFOGRAPH
-                  </div>
-               </div>
-               <!-- row RFT graphs-->
-               <div class="row RFT_perf">
-                  <div class=col-sm>
-                     <div id="ct_avg" class="graph" title ="Average of working days needed to complete an orders, without customer delayed days"><span>Cycle Time Avg</span></div>
-                  </div>
-                  <div class=col-sm>
-                     <div id="ct_perf" class="graph" title ="Percentage of Orders delivered withing the Lead Targets for the Product and the Delivery Type"><span>Cycle Time Performance</span></div>
-                  </div>
-                  <div class=col-sm>
-                     <div id="ontime_perf" class="graph" title ="Monthly volume of Orders delivered On Time or Late, using the Customer Committed Date as reference. "><span>RFT Performance</span></div>
-                  </div>
-               </div>
+                    </div>
+                </div>
+                <!-- row selectors-->
+                <div class="row selectors" id="selectors-section" title="These filters can be applied to all the graphs in the dashboard">
+                    <div class="col">
+                        <div id="wip_group_selector">Select Channel
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="product_selector">Select Product
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="project_selector">Select Project
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="reset_selector"><a class="btn btn-outline-light btn-sm float-center" href="javascript:dc.filterAll();dc.redrawAll();" role="button">Reset Filters</a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <!--Row section title-->
+                <div class="row section-title">
+                    <div class="col">
+                        WIP INFOGRAPH
+                    </div>
+                </div>
+                <!-- row WIP graphs-->
+                <div class="row WIP">
+                    <div class=col-sm>
+                        <div id="created" class="graph" title="Created Orders per Financial Period (April to March)"><span>Created Orders</span></div>
+                    </div>
+                    <div class=col-sm>
+                        <div id="completed" class="graph" title="Completed Orders per Financial Period (April to March)"><span>Completed Orders</span></div>
+                    </div>
+                    <div class=col-sm>
+                        <div id="order_type" class="graph" title="Volume of Orders by Order Type"><span>Order Type</span></div>
+                    </div>
+                </div>
+                <!--Row section title-->
+                <div class="row section-title">
+                    <div class="col">
+                        RFT INFOGRAPH
+                    </div>
+                </div>
+                <!-- row RFT graphs-->
+                <div class="row RFT_perf">
+                    <div class=col-sm>
+                        <div id="ct_avg" class="graph" title="Average of working days needed to complete an orders, without customer delayed days"><span>Cycle Time Avg</span></div>
+                    </div>
+                    <div class=col-sm>
+                        <div id="ct_perf" class="graph" title="Percentage of Orders delivered withing the Lead Targets for the Product and the Delivery Type"><span>Cycle Time Performance</span></div>
+                    </div>
+                    <div class=col-sm>
+                        <div id="ontime_perf" class="graph" title="Monthly volume of Orders delivered On Time or Late, using the Customer Committed Date as reference. "><span>RFT Performance</span></div>
+                    </div>
+                </div>
             </div>
             <!--Row section title-->
-            <div class ="row section-title">
-               <div class="col">
-                  PROJECT/COUNTRY/PRODUCT INFOGRAPH
-               </div>
+            <div class="row section-title">
+                <div class="col">
+                    PROJECT/COUNTRY/PRODUCT INFOGRAPH
+                </div>
             </div>
             <!-- row RFT graphs-->
             <div class="row RFT_perf">
-               <div class=col-sm>
-                  <div id="del_product" class="graph" title = "Volume of Orders Delivered by Products"><span>Delveries by Product</span></div>
-               </div>
-               <div class=col-sm>
-                  <div id="del_country" class="graph" title="Volume of Orders Delivered by Products"><span>Deliveries by Country</span></div>
-               </div>
-               <div class=col-sm>
-                  <div id="del_project" class="graph" title ="Volume of Orders Delivered by Project"><span>Delivery by Project</span></div>
-               </div>
+                <div class=col-sm>
+                    <div id="del_product" class="graph" title="Volume of Orders Delivered by Products"><span>Delveries by Product</span></div>
+                </div>
+                <div class=col-sm>
+                    <div id="del_country" class="graph" title="Volume of Orders Delivered by Products"><span>Deliveries by Country</span></div>
+                </div>
+                <div class=col-sm>
+                    <div id="del_project" class="graph" title="Volume of Orders Delivered by Project"><span>Delivery by Project</span></div>
+                </div>
             </div>
             <!-- Footer -->
             <div class="row footer">
-               <div class="col">
-                  <footer class="page-footer font-small blue">
-                     <div class="footer-copyright text-center py-3">
-                        Dashboard Admin : Valentina Novara
-                        <div class="row" >
-                           <a href="CREmail.html" class="btn btn-outline-light btn-sm float-center btn-rounded">Change Requests</a>
+                <div class="col">
+                    <footer class="page-footer font-small blue">
+                        <div class="footer-copyright text-center py-3">
+                            Dashboard Admin : Valentina Novara
+                            <div class="col">
+                                <a href="CREmail.html" class="btn btn-outline-light btn-sm float-center btn-rounded">Change Requests</a>
+                            </div>
                         </div>
-                     </div>
-                  </footer>
-               </div>
+                    </footer>
+                </div>
             </div>
-         </div>
-         <!-- Menu toggle script -->
-         <script>
+        </div>
+        <!-- Menu toggle script -->
+        <script>
             $("#menu-toggle").click(function(e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("menuDisplayed");
             });
-         </script>
-         <!--Sticky-->
-         <script type="text/javascript" src="assets/static/js/sticky.js"></script>
-      </div>
-   </body>
+        </script>
+        <!--Sticky-->
+        <script type="text/javascript" src="assets/static/js/sticky.js"></script>
+
+    </div>
+</body>
+
 </html>

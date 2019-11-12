@@ -1,4 +1,4 @@
-//load data
+//load data and defer graphs until data is loaded
 queue()
     .defer(d3.csv, "data/orders.csv")
 
@@ -8,16 +8,18 @@ queue()
 // Make graphs function
 function makeGraphs(error, orderData) {
 
-    var ndx = crossfilter(orderData);
+//Parse dates for later use
+    
     var parseDate = d3.time.format("%d/%m/%Y").parse;
-    orderData.forEach(function(d) {
-        d.Completed_Month = parseDate(d.Completed_Month);
-    });
+    
 
-
+//Parse CT to number for average calculation
     orderData.forEach(function(d) {
         d.CT_Ex_Delayed_Days = parseInt(d.CT_Ex_Delayed_Days)
     })
+
+//crossfilter data
+    var ndx = crossfilter(orderData);
 
 
     show_wip_group_selector(ndx);
@@ -34,13 +36,18 @@ function makeGraphs(error, orderData) {
     show_monthly_delivery(ndx);
     show_delivery_Product(ndx);
     show_delivery_Project(ndx);
-    show_delivery_country_composite(ndx);
-
+    
+//Parsing used for composite graph only
+orderData.forEach(function(d) {		
+        d.Completed_Month = parseDate(d.Completed_Month);		
+    });
+show_delivery_country_composite(ndx);
 
     dc.renderAll();
 }
 
-//Selector js
+//Selectors js
+//Channel
 function show_wip_group_selector(ndx) {
     var dim = ndx.dimension(dc.pluck('Channel'));
     var group = dim.group();
@@ -49,7 +56,7 @@ function show_wip_group_selector(ndx) {
         .group(group);
 
 }
-
+//Product
 function show_product_selector(ndx) {
     var dim = ndx.dimension(dc.pluck('Product'));
     var group = dim.group();
@@ -58,7 +65,7 @@ function show_product_selector(ndx) {
         .group(group);
 
 }
-
+//Project
 function show_project_selector(ndx) {
     var dim = ndx.dimension(dc.pluck('Project'));
     var group = dim.group();
@@ -205,7 +212,7 @@ var dim = ndx.dimension(dc.pluck('Created_Month'));
 //completed line js
 function show_completed(ndx) {
 
-    var dim = ndx.dimension(dc.pluck('Completed_Month'));
+    var dim = ndx.dimension(dc.pluck("Completed_Month"));
     var group = dim.group();
 
     dc.lineChart("#completed")
@@ -228,6 +235,7 @@ function show_completed(ndx) {
         .colors("#34DDDD")
         .yAxis().ticks(20);
 }
+       
 //WIP pie js
 function show_order_order_type(ndx) {
     var dim = ndx.dimension(dc.pluck('Order_Type'));
@@ -359,7 +367,7 @@ function show_SLT_perf(ndx) {
             bottom: 30,
             left: 30
         });
-    //.ordinalColors(['#d93733','#108a24']);
+
 }
 //On time vs Late stacked-bars graph
 function show_ontime_late(ndx) {
@@ -416,7 +424,7 @@ function show_ontime_late(ndx) {
             left: 30
         });
 }
-//delivery_Product(ndx);
+//Delivery Product Bars
 function show_delivery_Product(ndx) {
     var dim = ndx.dimension(dc.pluck('Product'));
     var group = dim.group();
@@ -435,7 +443,7 @@ function show_delivery_Product(ndx) {
         .legend(dc.legend())
 
 }
-//show_delivery_Project(ndx);
+//Delivery Project bars
 function show_delivery_Project(ndx) {
     function delbyproject(dimension, On_Time) {
         return dimension.group().reduce(
@@ -491,7 +499,7 @@ function show_delivery_Project(ndx) {
         });
 }
 
-//Delivery Country RFT composite
+//Delivery Country RFT composite lines
    function show_delivery_country_composite(ndx){
    var dateDim = ndx.dimension(function(d) {return d.Completed_Month;});
     var minDate = dateDim.bottom(1)[0].Completed_Month;
