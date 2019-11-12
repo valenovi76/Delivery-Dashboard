@@ -78,7 +78,7 @@ For example, selecting one segment of the Order Type Pie graph will filter accor
 
 Thorough testing was conducted on the data loading via console.log, crossreference against an excel pivot on the same data.
 Further testing was conducted to ensure that the crossfilter was properly working across the graphs
-A copy of the excel file built to test against the console logs and the crossfilter can be found [here](/assets/data/Data_testing.xlsx).
+A copy of the excel file built to test against the console logs and the crossfilter can be found [here](/data/Data_testing.xlsx).
 Please note how the Excel slicers re-create the crossfilter effect as well as the slicers'.
 Below a picture of the test on the data load
 ![Testing Data](assets/static/images/Data_testing.JPG)
