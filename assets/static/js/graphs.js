@@ -15,8 +15,8 @@ function makeGraphs(error, orderData) {
 
 //Parse CT to number for average calculation
     orderData.forEach(function(d) {
-        d.CT_Ex_Delayed_Days = parseInt(d.CT_Ex_Delayed_Days)
-    })
+        d.CT_Ex_Delayed_Days = parseInt(d.CT_Ex_Delayed_Days);
+    });
 
 //crossfilter data
     var ndx = crossfilter(orderData);
@@ -108,7 +108,7 @@ function show_percent_RFT_OnTime(ndx) {
                 return (d.match / d.total);
             }
         })
-        .group(percentageThatAreOnTime)
+        .group(percentageThatAreOnTime);
 }
 // KPIS values - CT %
 function show_percent_CT_Pass(ndx) {
@@ -144,7 +144,7 @@ function show_percent_CT_Pass(ndx) {
                 return (d.match / d.total);
             }
         })
-        .group(percentageThatArePassed)
+        .group(percentageThatArePassed);
 }
 //KPIS values - Monthly deliveries
 function show_monthly_delivery(ndx) {
@@ -180,7 +180,7 @@ function show_monthly_delivery(ndx) {
                 return (d.match / 6);
             }
         })
-        .group(avgMonthlyDeliveries)
+        .group(avgMonthlyDeliveries);
 }
 //created line js
 function show_created(ndx) {
@@ -252,7 +252,7 @@ function show_order_order_type(ndx) {
         .dimension(dim)
         .group(group)
         .ordinalColors(["#750075", "#D100D1", "#FF2EFF", "#FF8AFF"])
-        .legend(dc.legend())
+        .legend(dc.legend());
 
 }
 //CT Avg line js
@@ -302,7 +302,7 @@ function show_ct_avg(ndx) {
         .dimension(dim)
         .group(group)
         .valueAccessor(function(d) {
-            return d.value.average
+            return d.value.average;
         })
         .transitionDuration(500)
         .x(d3.scale.ordinal())
@@ -440,7 +440,7 @@ function show_delivery_Product(ndx) {
         .ordinalColors(["#34DDDD", "#FF0BAC", "#6AF2F0", "#54086B", "#fc5603"])
         .dimension(dim)
         .group(group)
-        .legend(dc.legend())
+        .legend(dc.legend());
 
 }
 //Delivery Project bars
@@ -522,7 +522,7 @@ function show_delivery_Project(ndx) {
     return +1;
     }
     else{
-        return +0
+        return +0;
     }
     });
 
